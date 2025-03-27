@@ -3,7 +3,7 @@
 
 ![Alt Text](https://github.com/sindresorhus/sindresorhus/blob/main/welcome-header.gif)
 
-Hi, I’m **Rishabh Ahuja** – part data whisperer, part cloud crafter, and full-time Pythonista 🐍.  
+Hi, I’m **Rishabh Ahuja** – part data alchemist, part cloud crafter, and full-time Pythonista 🐍.  
 I believe data is the new egg — raw, full of potential, and capable of transforming everything when handled right.
 
 ---
