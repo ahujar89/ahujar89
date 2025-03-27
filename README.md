@@ -38,7 +38,7 @@ I believe data is the new egg — raw, full of potential, and capable of transfo
 - 📦 Azure Cloud Solutions (ADF | Synapse | Blob | Azure Databricks)  
 - 🐍 Python Development (Data Science, APIs, Automation)  
 - 📊 Data Analytics & Dashboards (SQL | Power BI | Pandas)
-- - 💻 Frontend Development (React.js | React Native | HTML | CSS | Material UI)  
+- 💻 Frontend Development (React.js | React Native | HTML | CSS | Material UI)  
 - 🌐 RESTful APIs | Git | CI/CD Pipelines | Docker
   
 ---
