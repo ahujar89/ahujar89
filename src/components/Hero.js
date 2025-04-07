@@ -204,7 +204,7 @@ const Hero = () => {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          Software Engineer | Data Engineer/Analyst | Product/Project Manager
+          Bridging Frontend Craft & Data Insight to Build Purposeful Digital Products
         </Title>
         
         <Description
@@ -212,8 +212,7 @@ const Hero = () => {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          It started with curiosity, turned into passion, and now it's what I do. I'm Rishabh, and I create for impact.
-        </Description>
+            What began as a spark of curiosity has grown into a passion for solving real problems through technology. I’m Rishabh — part builder, part analyst, always curious and I create digital solutions that are thoughtful, data-informed, and user-first.        </Description>
         
         <div>
           <Button
@@ -224,7 +223,7 @@ const Hero = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            View Projects
+            Explore my work
           </Button>
           
           <Button
@@ -235,7 +234,7 @@ const Hero = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Get In Touch
+            Reach out, I’d love to connect!
           </Button>
         </div>
         
