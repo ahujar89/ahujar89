@@ -12,18 +12,39 @@ const Nav = styled(motion.nav)`
   left: 0;
   right: 0;
   z-index: 100;
-  transition: background-color 0.3s ease;
-  background-color: ${({ scrolled }) => scrolled ? 'rgba(246, 249, 255, 0.9)' : 'transparent'};
+  transition: all 0.3s ease;
+  background-color: ${({ scrolled }) => scrolled ? 'rgba(26, 29, 38, 0.95)' : 'transparent'};
   backdrop-filter: ${({ scrolled }) => scrolled ? 'blur(10px)' : 'none'};
-  box-shadow: ${({ scrolled }) => scrolled ? 'var(--shadow)' : 'none'};
+  box-shadow: ${({ scrolled }) => scrolled ? '0 4px 30px rgba(0, 0, 0, 0.1)' : 'none'};
 `;
 
-const Logo = styled.div`
-  font-size: 1.5rem;
+const Logo = styled(motion.div)`
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
   font-weight: 700;
-  color: var(--primary-color);
-  letter-spacing: 1px;
+  color: var(--primary-light);
+  letter-spacing: 2px;
   cursor: pointer;
+  position: relative;
+  z-index: 2;
+  
+  &:before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    z-index: -1;
+    border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  &:hover:before {
+    opacity: 0.2;
+  }
 `;
 
 const NavItems = styled.div`
@@ -35,19 +56,20 @@ const NavItems = styled.div`
   }
 `;
 
-const NavItem = styled(motion.a)`
-  color: var(--text-dark);
-  font-size: 1rem;
-  cursor: pointer;
+const NavItem = styled.a`
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
   position: relative;
+  padding: 0.5rem 0;
   
   &:after {
     content: '';
     position: absolute;
+    bottom: 0;
+    left: 0;
     width: 0;
     height: 2px;
-    bottom: -5px;
-    left: 0;
     background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
     transition: width 0.3s ease;
   }
@@ -69,7 +91,7 @@ const MobileMenuButton = styled.div`
   div {
     width: 25px;
     height: 3px;
-    background-color: var(--text-dark);
+    background-color: var(--text-light);
     margin: 5px 0;
     transition: all 0.3s ease;
     
@@ -101,16 +123,37 @@ const MobileMenu = styled(motion.div)`
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: var(--background-light);
+    background-color: var(--background-dark);
     z-index: 99;
     padding: 2rem;
   }
 `;
 
 const MobileNavItem = styled(motion.a)`
-  color: var(--text-dark);
+  color: var(--text-light);
   font-size: 1.5rem;
   cursor: pointer;
+  position: relative;
+  padding: 0.5rem 0;
+  
+  &:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+    transition: width 0.3s ease;
+  }
+  
+  &:hover {
+    color: var(--primary-light);
+    
+    &:after {
+      width: 100%;
+    }
+  }
 `;
 
 const navVariants = {
@@ -133,11 +176,7 @@ const Navbar = () => {
   
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 50);
     };
     
     window.addEventListener('scroll', handleScroll);
@@ -148,7 +187,7 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
   
-  const navItems = ['Home', 'About', 'Skills', 'Projects', 'Contact'];
+  const navItems = ['Home', 'About', 'Education', 'Skills', 'Projects', 'Contact'];
   
   return (
     <Nav 
@@ -157,7 +196,12 @@ const Navbar = () => {
       initial="hidden"
       animate="visible"
     >
-      <Logo>PORTFOLIO</Logo>
+      <Logo
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        RA
+      </Logo>
       
       <NavItems>
         {navItems.map((item, i) => (
@@ -168,6 +212,8 @@ const Navbar = () => {
             variants={itemVariants}
             initial="hidden"
             animate="visible"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
           >
             {item}
           </NavItem>
@@ -195,6 +241,8 @@ const Navbar = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1, duration: 0.3 }}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
             >
               {item}
             </MobileNavItem>

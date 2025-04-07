@@ -73,11 +73,12 @@ const AboutParagraph = styled(motion.p)`
 
 const AboutImage = styled(motion.div)`
   position: relative;
-  width: 100%;
+  width: 400px;
   height: 400px;
-  border-radius: 20px;
+  border-radius: 50%;
   overflow: hidden;
   box-shadow: var(--shadow);
+  margin: 0 auto;
   
   &:before {
     content: '';
@@ -86,9 +87,10 @@ const AboutImage = styled(motion.div)`
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-    opacity: 0.8;
+    background: linear-gradient(135deg, rgba(78, 123, 255, 0.3), rgba(0, 206, 201, 0.3));
+    opacity: 0.5;
     z-index: 1;
+    mix-blend-mode: overlay;
   }
   
   img {
@@ -96,6 +98,13 @@ const AboutImage = styled(motion.div)`
     height: 100%;
     object-fit: cover;
     z-index: 0;
+    filter: contrast(1.1) brightness(1.05) opacity(0.9);
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.05);
+      filter: contrast(1.2) brightness(1.1) opacity(1);
+    }
   }
 `;
 
@@ -147,7 +156,7 @@ const About = () => {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.1 }}
             >
-                I’m a driven and curious software developer with a passion for creating seamless digital experiences and uncovering insights through data. With a background in frontend development and growing expertise in data analytics and engineering, I strive to bridge the gap between intuitive design and intelligent, data-driven systems.
+                I'm a driven and curious software developer with a passion for creating seamless digital experiences and uncovering insights through data. With a background in frontend development and growing expertise in data analytics and engineering, I strive to bridge the gap between intuitive design and intelligent, data-driven systems.
             </AboutParagraph>
             <AboutParagraph
               initial={{ opacity: 0, y: 20 }}
@@ -161,7 +170,7 @@ const About = () => {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.3 }}
             >
-                Beyond the screen, I draw inspiration from everyday moments — observing how people engage with technology, chasing ideas that fuel curiosity, and bringing a thoughtful, creative approach to every project. I bring a unique mix of perspective, passion, and persistence — and I’m here to build what matters.                </AboutParagraph>
+                Beyond the screen, I draw inspiration from everyday moments — observing how people engage with technology, chasing ideas that fuel curiosity, and bringing a thoughtful, creative approach to every project. I bring a unique mix of perspective, passion, and persistence — and I'm here to build what matters.                </AboutParagraph>
             <DownloadButton
               href="/file:///Users/rishabhahuja/Desktop/Resumes/Resume_DT_UwinApply.pdf"
               download
@@ -179,7 +188,7 @@ const About = () => {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8 }}
           >
-            <img src="/profile.jpg" alt="Profile" />
+            <img src="/images/profile.jpeg" alt="Rishabh Ahuja" />
           </AboutImage>
         </AboutContent>
       </Container>

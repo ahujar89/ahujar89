@@ -6,11 +6,13 @@ import { motion } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
+import Education from './components/Education';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Loader from './components/Loader';
+import GlobalStyles from './styles/GlobalStyles';
 
 const AppContainer = styled.div`
   position: relative;
@@ -29,25 +31,29 @@ function App() {
   }, []);
 
   return (
-    <AppContainer>
-      {loading ? (
-        <Loader />
-      ) : (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <Navbar />
-          <Hero />
-          <About />
-          <Skills />
-          <Projects />
-          <Contact />
-          <Footer />
-        </motion.div>
-      )}
-    </AppContainer>
+    <>
+      <GlobalStyles />
+      <AppContainer>
+        {loading ? (
+          <Loader />
+        ) : (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Navbar />
+            <Hero />
+            <About />
+            <Education />
+            <Skills />
+            <Projects />
+            <Contact />
+            <Footer />
+          </motion.div>
+        )}
+      </AppContainer>
+    </>
   );
 }
 

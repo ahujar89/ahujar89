@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 const HeroSection = styled.section`
   position: relative;
@@ -12,6 +13,7 @@ const HeroSection = styled.section`
   min-height: 100vh;
   padding: 0 2rem;
   overflow: hidden;
+  background-color: var(--background);
   
   &:before {
     content: '';
@@ -21,13 +23,29 @@ const HeroSection = styled.section`
     right: 0;
     bottom: 0;
     background: radial-gradient(circle at top right, rgba(78, 123, 255, 0.1), transparent 70%);
-    z-index: -1;
+    z-index: 1;
+  }
+  
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/images/tech-bg.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15;
+    z-index: 0;
+    filter: grayscale(100%) contrast(120%);
   }
 `;
 
 const HeroContent = styled(motion.div)`
   max-width: 800px;
-  z-index: 1;
+  z-index: 2;
+  position: relative;
 `;
 
 const SmallText = styled(motion.p)`
@@ -87,20 +105,29 @@ const Button = styled(motion.a)`
   }
 `;
 
-const SecondaryButton = styled(motion.a)`
-  display: inline-block;
-  padding: 0.8rem 2rem;
-  background: transparent;
-  color: var(--primary-color);
-  border: 1px solid var(--primary-color);
-  border-radius: 4px;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  text-decoration: none;
+const SocialLinks = styled(motion.div)`
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2rem;
+`;
+
+const SocialLink = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--background-card);
+  color: var(--text-light);
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  border: 1px solid var(--border-color);
   
   &:hover {
-    background: rgba(78, 123, 255, 0.1);
+    background: var(--primary-color);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(108, 92, 231, 0.3);
   }
 `;
 
@@ -184,7 +211,7 @@ const Hero = () => {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          It started with curiosity, turned into passion, and now it’s what I do. I’m Rishabh, and I create for impact.
+          It started with curiosity, turned into passion, and now it's what I do. I'm Rishabh, and I create for impact.
         </Description>
         
         <div>
@@ -199,7 +226,7 @@ const Hero = () => {
             View Projects
           </Button>
           
-          <SecondaryButton
+          <Button
             href="#contact"
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -207,12 +234,28 @@ const Hero = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Contact Me
-          </SecondaryButton>
+            Get In Touch
+          </Button>
         </div>
+        
+        <SocialLinks
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.6 }}
+        >
+          <SocialLink href="https://github.com/ahujar89" target="_blank" rel="noopener noreferrer">
+            <FaGithub />
+          </SocialLink>
+          <SocialLink href="https://www.linkedin.com/in/rishabhahuja2507/" target="_blank" rel="noopener noreferrer">
+            <FaLinkedin />
+          </SocialLink>
+          <SocialLink href="https://twitter.com/ahujar96" target="_blank" rel="noopener noreferrer">
+            <FaTwitter />
+          </SocialLink>
+        </SocialLinks>
       </HeroContent>
     </HeroSection>
   );
 };
 
-export default Hero; 
+export default Hero;
