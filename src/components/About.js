@@ -68,7 +68,7 @@ const SectionTitle = styled(motion.h2)`
 const AboutParagraph = styled(motion.p)`
   font-size: 1.1rem;
   line-height: 1.8;
-  color: var(--text-medium);
+  color: var(--text-dark);
 `;
 
 const AboutImage = styled(motion.div)`
