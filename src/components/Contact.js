@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaMapMarkerAlt, FaEnvelope, FaPhone, FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa';
+import emailjs from '@emailjs/browser';
 
 const ContactSection = styled.section`
   padding: 8rem 2rem;
@@ -251,7 +252,18 @@ const FormSuccessMessage = styled(motion.div)`
   text-align: center;
 `;
 
+const FormErrorMessage = styled(motion.div)`
+  background: rgba(255, 0, 0, 0.1);
+  border: 1px solid rgba(255, 0, 0, 0.3);
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  color: #f44336;
+  text-align: center;
+`;
+
 const Contact = () => {
+  const form = useRef();
   const [formState, setFormState] = useState({
     name: '',
     email: '',
@@ -259,11 +271,19 @@ const Contact = () => {
     message: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1
   });
+  
+  // Initialize EmailJS
+  useEffect(() => {
+    emailjs.init("HcRBGxUgjCXXnhcUt");
+  }, []);
   
   const handleChange = (e) => {
     setFormState({
@@ -272,23 +292,52 @@ const Contact = () => {
     });
   };
   
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you would typically send the form data to a server
-    console.log(formState);
-    // For demo purposes, just show success message
-    setIsSubmitted(true);
-    setFormState({
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
-    });
+    setIsLoading(true);
+    setIsError(false);
+    setErrorMessage('');
     
-    // Reset the success message after 5 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-    }, 5000);
+    try {
+      
+      const result = await emailjs.sendForm(
+        'service_sxp22tn', //  EmailJS service ID
+        'template_s9lwczi', // EmailJS template ID
+        form.current,
+        'HcRBGxUgjCXXnhcUt' //  EmailJS public key
+      );
+      
+      console.log('Email sent successfully:', result);
+      
+      
+      // Simulate successful submission for now
+      setTimeout(() => {
+        setIsSubmitted(true);
+        setIsLoading(false);
+        setFormState({
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        });
+        
+        // Reset the success message after 5 seconds
+        setTimeout(() => {
+          setIsSubmitted(false);
+        }, 5000);
+      }, 1000);
+      
+    } catch (error) {
+      console.error('Error sending message:', error);
+      setErrorMessage(error.message || 'There was an error sending your message. Please try again later.');
+      setIsError(true);
+      setIsLoading(false);
+      
+      // Reset the error message after 5 seconds
+      setTimeout(() => {
+        setIsError(false);
+      }, 5000);
+    }
   };
   
   return (
@@ -313,6 +362,7 @@ const Contact = () => {
         
         <ContactWrapper>
           <ContactForm
+            ref={form}
             onSubmit={handleSubmit}
             initial={{ opacity: 0, x: -30 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -326,6 +376,16 @@ const Contact = () => {
               >
                 Your message has been sent successfully! I'll get back to you soon.
               </FormSuccessMessage>
+            )}
+            
+            {isError && (
+              <FormErrorMessage
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+              >
+                {errorMessage || 'There was an error sending your message. Please try again later.'}
+              </FormErrorMessage>
             )}
             
             <FormGroup>
@@ -375,8 +435,9 @@ const Contact = () => {
               type="submit"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              disabled={isLoading}
             >
-              Send Message
+              {isLoading ? 'Sending...' : 'Send Message'}
             </SubmitButton>
           </ContactForm>
           

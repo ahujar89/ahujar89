@@ -3,15 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "@react-three/drei": "^9.88.2",
+    "framer-motion": "^10.16.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "framer-motion": "^10.16.4",
-    "react-intersection-observer": "^9.5.2",
     "react-icons": "^4.11.0",
-    "three": "^0.157.0",
+    "react-intersection-observer": "^9.5.2",
     "react-three-fiber": "^6.0.13",
-    "@react-three/drei": "^9.88.2",
-    "styled-components": "^6.1.1"
+    "styled-components": "^6.1.1",
+    "three": "^0.157.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -39,4 +40,4 @@
   "devDependencies": {
     "react-scripts": "5.0.1"
   }
-} 
+}
