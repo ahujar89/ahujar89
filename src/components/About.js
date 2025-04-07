@@ -2,67 +2,49 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { FaDownload } from 'react-icons/fa';
 
 const AboutSection = styled.section`
-  display: flex;
-  flex-direction: column;
   padding: 8rem 2rem;
   background-color: var(--background-light-accent);
-  
-  @media (min-width: 768px) {
-    flex-direction: row;
-    align-items: center;
-    gap: 4rem;
-  }
-`;
-
-const AboutContent = styled.div`
-  flex: 1;
-  
-  @media (min-width: 768px) {
-    max-width: 60%;
-  }
-`;
-
-const AboutImageContainer = styled(motion.div)`
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 3rem;
-  
-  @media (min-width: 768px) {
-    margin-top: 0;
-  }
-`;
-
-const AboutImage = styled(motion.div)`
-  width: 300px;
-  height: 300px;
-  border-radius: 10px;
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   position: relative;
   overflow: hidden;
-  box-shadow: var(--shadow);
   
   &:before {
     content: '';
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background: repeating-linear-gradient(
-      45deg,
-      rgba(255, 255, 255, 0.1),
-      rgba(255, 255, 255, 0.1) 10px,
-      transparent 10px,
-      transparent 20px
-    );
+    background: linear-gradient(135deg, rgba(78, 123, 255, 0.05), transparent);
+    z-index: 0;
   }
+`;
+
+const Container = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+`;
+
+const AboutContent = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
   
-  @media (min-width: 768px) {
-    width: 350px;
-    height: 350px;
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 3rem;
   }
+`;
+
+const AboutText = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 `;
 
 const SectionTitle = styled(motion.h2)`
@@ -76,130 +58,131 @@ const SectionTitle = styled(motion.h2)`
     content: '';
     position: absolute;
     left: 0;
-    bottom: -5px;
+    bottom: -10px;
     width: 60px;
     height: 3px;
     background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
   }
 `;
 
-const SectionSubtitle = styled(motion.h3)`
-  font-size: 1.2rem;
-  color: var(--primary-color);
-  margin-bottom: 2rem;
-`;
-
-const AboutText = styled(motion.p)`
+const AboutParagraph = styled(motion.p)`
   font-size: 1.1rem;
   line-height: 1.8;
   color: var(--text-medium);
-  margin-bottom: 2rem;
 `;
 
-const Stats = styled(motion.div)`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-`;
-
-const StatItem = styled(motion.div)`
-  text-align: center;
-`;
-
-const StatNumber = styled.h4`
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--primary-color);
-  margin-bottom: 0.5rem;
-`;
-
-const StatTitle = styled.p`
-  font-size: 1rem;
-  color: var(--text-medium);
-`;
-
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2
-    }
+const AboutImage = styled(motion.div)`
+  position: relative;
+  width: 100%;
+  height: 400px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    opacity: 0.8;
+    z-index: 1;
   }
-};
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+`;
 
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0 }
-};
+const DownloadButton = styled(motion.a)`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: var(--primary-color);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  text-decoration: none;
+  margin-top: 1rem;
+  align-self: flex-start;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  svg {
+    font-size: 1.2rem;
+  }
+`;
 
 const About = () => {
-  const [contentRef, contentInView] = useInView({
+  const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.2
+    threshold: 0.1
   });
-  
-  const [imageRef, imageInView] = useInView({
-    triggerOnce: true,
-    threshold: 0.2
-  });
-  
-  const stats = [
-    { number: '4+', title: 'Years Experience' },
-    { number: '10+', title: 'Projects Completed' },
-    { number: '5+', title: 'Happy Clients' }
-  ];
   
   return (
-    <AboutSection id="about">
-      <AboutContent ref={contentRef}>
-        <SectionTitle
-          initial={{ opacity: 0, y: 20 }}
-          animate={contentInView ? { opacity: 1, y: 0 } : {}}
-        >
-          About Me
-        </SectionTitle>
-        
-        <SectionSubtitle
-          initial={{ opacity: 0, y: 20 }}
-          animate={contentInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.1 }}
-        >
-          Passionate Tech Professional
-        </SectionSubtitle>
-        
-        <AboutText
-          initial={{ opacity: 0, y: 20 }}
-          animate={contentInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.2 }}
-        >
-          I’m Rishabh Ahuja, a tech enthusiast and problem solver with a strong background in software development, data engineering, and cloud technologies. With experience at Infosys and TCS, I’ve built scalable web solutions, optimized data-driven processes, and led agile transformations. My expertise spans React.js, Python, and cloud platforms like Azure. I thrive on solving complex problems, building efficient systems, and continuously learning to stay ahead in the ever-evolving tech landscape.
-        </AboutText>
-        
-        <Stats
-          variants={container}
-          initial="hidden"
-          animate={contentInView ? "show" : "hidden"}
-        >
-          {stats.map((stat, index) => (
-            <StatItem key={index} variants={item}>
-              <StatNumber>{stat.number}</StatNumber>
-              <StatTitle>{stat.title}</StatTitle>
-            </StatItem>
-          ))}
-        </Stats>
-      </AboutContent>
-      
-      <AboutImageContainer 
-        ref={imageRef}
-      >
-        <AboutImage
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={imageInView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.5 }}
-        />
-      </AboutImageContainer>
+    <AboutSection id="about" ref={ref}>
+      <Container>
+        <AboutContent>
+          <AboutText>
+            <SectionTitle
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+            >
+              About Me
+            </SectionTitle>
+            <AboutParagraph
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.1 }}
+            >
+                I’m a driven and curious software developer with a passion for creating seamless digital experiences and uncovering insights through data. With a background in frontend development and growing expertise in data analytics and engineering, I strive to bridge the gap between intuitive design and intelligent, data-driven systems.
+            </AboutParagraph>
+            <AboutParagraph
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.2 }}
+            >
+                My journey started with a fascination for how the web works, which evolved into a deeper interest in technologies like React.js, Node.js, and cloud platforms. I enjoy designing responsive interfaces and working with data pipelines that turn complex information into meaningful outcomes — always with a focus on real-world impact.
+            </AboutParagraph>
+            <AboutParagraph
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.3 }}
+            >
+                Beyond the screen, I draw inspiration from everyday moments — observing how people engage with technology, chasing ideas that fuel curiosity, and bringing a thoughtful, creative approach to every project. I bring a unique mix of perspective, passion, and persistence — and I’m here to build what matters.                </AboutParagraph>
+            <DownloadButton
+              href="/file:///Users/rishabhahuja/Desktop/Resumes/Resume_DT_UwinApply.pdf"
+              download
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.4 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <FaDownload /> Download Resume
+            </DownloadButton>
+          </AboutText>
+          <AboutImage
+            initial={{ opacity: 0, x: 50 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8 }}
+          >
+            <img src="/profile.jpg" alt="Profile" />
+          </AboutImage>
+        </AboutContent>
+      </Container>
     </AboutSection>
   );
 };
