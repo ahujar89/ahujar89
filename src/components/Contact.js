@@ -6,7 +6,7 @@ import { FaMapMarkerAlt, FaEnvelope, FaPhone, FaLinkedin, FaGithub, FaTwitter } 
 
 const ContactSection = styled.section`
   padding: 8rem 2rem;
-  background-color: var(--background-light);
+  background-color: var(--background-light-accent);
   position: relative;
   
   &:before {
@@ -16,7 +16,7 @@ const ContactSection = styled.section`
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom right, rgba(78, 123, 255, 0.05), transparent);
+    background: linear-gradient(135deg, rgba(78, 123, 255, 0.05), transparent);
     z-index: 0;
   }
 `;
@@ -38,13 +38,13 @@ const SectionTitle = styled(motion.h2)`
   margin-bottom: 1rem;
   position: relative;
   display: inline-block;
+  color: var(--text-dark);
   
   &:after {
     content: '';
     position: absolute;
-    left: 50%;
+    left: 0;
     bottom: -10px;
-    transform: translateX(-50%);
     width: 60px;
     height: 3px;
     background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
@@ -53,7 +53,7 @@ const SectionTitle = styled(motion.h2)`
 
 const SectionSubtitle = styled(motion.p)`
   font-size: 1.2rem;
-  color: var(--text-medium);
+  color: var(--text-dark);
   max-width: 600px;
   margin: 0 auto;
   margin-top: 1.5rem;
@@ -70,12 +70,17 @@ const ContactWrapper = styled.div`
 `;
 
 const ContactForm = styled(motion.form)`
-  background: var(--card-bg);
+  background: rgba(255, 255, 255, 0.9);
   padding: 2.5rem;
-  border-radius: 10px;
+  border-radius: 15px;
   backdrop-filter: blur(5px);
-  border: 1px solid var(--border-color);
-  box-shadow: var(--shadow);
+  border: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  }
 `;
 
 const FormGroup = styled.div`
@@ -86,39 +91,52 @@ const FormLabel = styled.label`
   display: block;
   margin-bottom: 0.5rem;
   font-size: 0.9rem;
-  color: var(--text-medium);
+  color: var(--text-dark);
+  font-weight: 500;
 `;
 
 const FormInput = styled.input`
   width: 100%;
   padding: 0.8rem 1rem;
-  background: var(--background-light);
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
   color: var(--text-dark);
   font-size: 1rem;
-  transition: border-color 0.3s ease;
+  transition: all 0.3s ease;
   
   &:focus {
     outline: none;
     border-color: var(--primary-color);
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 0 3px rgba(78, 123, 255, 0.1);
+  }
+  
+  &::placeholder {
+    color: rgba(0, 0, 0, 0.4);
   }
 `;
 
 const FormTextarea = styled.textarea`
   width: 100%;
   padding: 0.8rem 1rem;
-  background: var(--background-light);
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
   color: var(--text-dark);
   font-size: 1rem;
   min-height: 150px;
-  transition: border-color 0.3s ease;
+  transition: all 0.3s ease;
   
   &:focus {
     outline: none;
     border-color: var(--primary-color);
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 0 3px rgba(78, 123, 255, 0.1);
+  }
+  
+  &::placeholder {
+    color: rgba(0, 0, 0, 0.4);
   }
 `;
 
@@ -131,10 +149,17 @@ const SubmitButton = styled(motion.button)`
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
-  transition: opacity 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(78, 123, 255, 0.2);
   
   &:hover {
-    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(78, 123, 255, 0.3);
+  }
+  
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(78, 123, 255, 0.2);
   }
 `;
 
@@ -147,22 +172,27 @@ const ContactInfo = styled(motion.div)`
 const ContactInfoCard = styled(motion.div)`
   background: var(--card-bg);
   padding: 2.5rem;
-  border-radius: 10px;
+  border-radius: 15px;
   backdrop-filter: blur(5px);
-  border: 1px solid var(--border-color);
+  border: none;
   margin-bottom: 2rem;
-  box-shadow: var(--shadow);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  }
 `;
 
 const ContactInfoTitle = styled.h3`
   font-size: 1.5rem;
   margin-bottom: 1.5rem;
-  color: var(--primary-color);
+  color: var(--text-dark);
 `;
 
 const ContactInfoText = styled.p`
   font-size: 1.1rem;
-  color: var(--text-medium);
+  color: var(--text-dark);
   line-height: 1.6;
   margin-bottom: 2rem;
 `;
@@ -183,7 +213,7 @@ const ContactIcon = styled.div`
 
 const ContactText = styled.p`
   font-size: 1rem;
-  color: var(--text-medium);
+  color: var(--text-dark);
 `;
 
 const SocialLinks = styled(motion.div)`

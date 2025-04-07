@@ -13,7 +13,7 @@ const HeroSection = styled.section`
   min-height: 100vh;
   padding: 0 2rem;
   overflow: hidden;
-  background-color: var(--background);
+  background-color: var(--background-light-accent);
   
   &:before {
     content: '';
@@ -60,6 +60,7 @@ const Name = styled(motion.h1)`
   font-weight: 700;
   margin-bottom: 1rem;
   line-height: 1.1;
+  color: var(--text-dark);
   
   @media (max-width: 768px) {
     font-size: 3rem;
@@ -70,7 +71,7 @@ const Title = styled(motion.h2)`
   font-size: 2.5rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
-  color: var(--text-medium);
+  color: var(--text-dark);
   
   @media (max-width: 768px) {
     font-size: 1.8rem;
@@ -82,7 +83,7 @@ const Description = styled(motion.p)`
   line-height: 1.6;
   margin-bottom: 2rem;
   max-width: 600px;
-  color: var(--text-medium);
+  color: var(--text-dark);
 `;
 
 const Button = styled(motion.a)`

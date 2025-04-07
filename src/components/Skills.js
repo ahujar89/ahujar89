@@ -8,7 +8,7 @@ import { DiMysql } from 'react-icons/di';
 
 const SkillsSection = styled.section`
   padding: 8rem 2rem;
-  background-color: var(--background-light);
+  background-color: var(--background-light-accent);
   position: relative;
   overflow: hidden;
   
@@ -46,9 +46,8 @@ const SectionTitle = styled(motion.h2)`
   &:after {
     content: '';
     position: absolute;
-    left: 50%;
+    left: 0;
     bottom: -10px;
-    transform: translateX(-50%);
     width: 60px;
     height: 3px;
     background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
@@ -57,7 +56,7 @@ const SectionTitle = styled(motion.h2)`
 
 const SectionSubtitle = styled(motion.p)`
   font-size: 1.2rem;
-  color: var(--text-medium);
+  color: var(--text-dark);
   max-width: 600px;
   margin: 0 auto;
   margin-top: 1.5rem;
@@ -77,12 +76,12 @@ const SkillsRow = styled(motion.div)`
 `;
 
 const SkillCategory = styled(motion.div)`
-  background: var(--card-bg);
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 15px;
   padding: 2.5rem;
   backdrop-filter: blur(5px);
-  border: 1px solid var(--border-color);
-  box-shadow: var(--shadow);
+  border: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -98,13 +97,13 @@ const SkillCategory = styled(motion.div)`
     width: 100%;
     height: 4px;
     background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-    opacity: 0;
+    opacity: 0.8;
     transition: opacity 0.3s ease;
   }
   
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
     
     &:before {
       opacity: 1;
@@ -142,15 +141,16 @@ const SkillItem = styled(motion.li)`
   align-items: center;
   gap: 0.8rem;
   font-size: 1.1rem;
-  color: var(--text-medium);
+  color: var(--text-dark);
   padding: 0.8rem;
-  background: var(--background-light);
+  background: rgba(240, 240, 245, 0.8);
   border-radius: 8px;
   transition: all 0.3s ease;
   
   &:hover {
-    background: rgba(78, 123, 255, 0.05);
+    background: rgba(78, 123, 255, 0.1);
     color: var(--primary-color);
+    transform: translateX(5px);
   }
 `;
 

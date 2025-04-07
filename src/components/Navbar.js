@@ -2,54 +2,62 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
-const Nav = styled(motion.nav)`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 2rem;
+const Nav = styled.nav`
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: 1000;
+  padding: 1rem 0;
   transition: all 0.3s ease;
-  background-color: ${({ scrolled }) => scrolled ? 'rgba(26, 29, 38, 0.95)' : 'transparent'};
-  backdrop-filter: ${({ scrolled }) => scrolled ? 'blur(10px)' : 'none'};
-  box-shadow: ${({ scrolled }) => scrolled ? '0 4px 30px rgba(0, 0, 0, 0.1)' : 'none'};
+  background-color: ${props => props.scrolled ? 'rgba(255, 255, 255, 0.95)' : 'transparent'};
+  box-shadow: ${props => props.scrolled ? '0 2px 10px rgba(0, 0, 0, 0.1)' : 'none'};
 `;
 
-const Logo = styled(motion.div)`
-  font-family: 'Orbitron', sans-serif;
-  font-size: 2rem;
+const Container = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const Logo = styled(motion.a)`
+  font-size: 1.5rem;
   font-weight: 700;
-  color: var(--primary-light);
-  letter-spacing: 2px;
-  cursor: pointer;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
   position: relative;
-  z-index: 2;
+  z-index: 10;
+  display: inline-block;
   
-  &:before {
+  &:after {
     content: '';
     position: absolute;
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
-    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
-    z-index: -1;
-    border-radius: 8px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
   }
   
-  &:hover:before {
-    opacity: 0.2;
+  &:hover:after {
+    transform: scaleX(1);
+    transform-origin: left;
   }
 `;
 
 const NavItems = styled.div`
   display: flex;
   gap: 2rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   
   @media (max-width: 768px) {
     display: none;
@@ -57,7 +65,7 @@ const NavItems = styled.div`
 `;
 
 const NavItem = styled.a`
-  color: var(--text);
+  color: var(--text-dark);
   text-decoration: none;
   font-weight: 500;
   position: relative;
@@ -189,6 +197,34 @@ const Navbar = () => {
   
   const navItems = ['Home', 'About', 'Education', 'Skills', 'Projects', 'Contact'];
   
+  // Sophisticated animation variants for the logo
+  const logoVariants = {
+    initial: { 
+      scale: 1,
+      rotate: 0,
+      y: 0,
+      color: "var(--primary-color)"
+    },
+    animate: { 
+      scale: [1, 1.03, 1.05, 1.03, 1],
+      rotate: [0, -2, 2, -1, 0],
+      y: [0, -2, 0, 2, 0],
+      color: [
+        "var(--primary-color)", 
+        "var(--secondary-color)", 
+        "var(--primary-color)", 
+        "var(--secondary-color)", 
+        "var(--primary-color)"
+      ],
+      transition: { 
+        duration: 6,
+        repeat: Infinity,
+        ease: "easeInOut",
+        times: [0, 0.25, 0.5, 0.75, 1]
+      }
+    }
+  };
+  
   return (
     <Nav 
       scrolled={scrolled}
@@ -196,36 +232,39 @@ const Navbar = () => {
       initial="hidden"
       animate="visible"
     >
-      <Logo
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        RA
-      </Logo>
-      
-      <NavItems>
-        {navItems.map((item, i) => (
-          <NavItem 
-            key={item} 
-            href={`#${item.toLowerCase()}`}
-            custom={i}
-            variants={itemVariants}
-            initial="hidden"
-            animate="visible"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            {item}
-          </NavItem>
-        ))}
-      </NavItems>
-      
-      <MobileMenuButton isOpen={isOpen} onClick={toggleMenu}>
-        <div />
-        <div />
-        <div />
-      </MobileMenuButton>
-      
+      <Container>
+        <Logo 
+          href="#home" 
+          variants={logoVariants}
+          initial="initial"
+          animate="animate"
+          whileHover={{ 
+            scale: 1.15, 
+            rotate: 5,
+            transition: { duration: 0.3 }
+          }}
+          whileTap={{ scale: 0.95 }}
+        >
+          RA
+        </Logo>
+        <NavItems>
+          {navItems.map((item, i) => (
+            <NavItem 
+              key={item} 
+              href={`#${item.toLowerCase()}`}
+              variants={itemVariants}
+              custom={i}
+            >
+              {item}
+            </NavItem>
+          ))}
+        </NavItems>
+        <MobileMenuButton isOpen={isOpen} onClick={toggleMenu}>
+          <div />
+          <div />
+          <div />
+        </MobileMenuButton>
+      </Container>
       {isOpen && (
         <MobileMenu
           initial={{ opacity: 0 }}
