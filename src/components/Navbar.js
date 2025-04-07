@@ -31,7 +31,22 @@ const Logo = styled(motion.a)`
   font-family: 'Inter', sans-serif;
   position: relative;
   z-index: 10;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary-color);
+    transition: all 0.3s ease;
+  }
+  
+  &:hover img {
+    transform: scale(1.1);
+    border-color: var(--secondary-color);
+  }
   
   &:after {
     content: '';
@@ -202,20 +217,12 @@ const Navbar = () => {
     initial: { 
       scale: 1,
       rotate: 0,
-      y: 0,
-      color: "var(--primary-color)"
+      y: 0
     },
     animate: { 
       scale: [1, 1.03, 1.05, 1.03, 1],
       rotate: [0, -2, 2, -1, 0],
       y: [0, -2, 0, 2, 0],
-      color: [
-        "var(--primary-color)", 
-        "var(--secondary-color)", 
-        "var(--primary-color)", 
-        "var(--secondary-color)", 
-        "var(--primary-color)"
-      ],
       transition: { 
         duration: 6,
         repeat: Infinity,
@@ -245,7 +252,7 @@ const Navbar = () => {
           }}
           whileTap={{ scale: 0.95 }}
         >
-          RA
+          <img src="/images/rishabh.jpg" alt="Rishabh Ahuja" />
         </Logo>
         <NavItems>
           {navItems.map((item, i) => (
