@@ -100,7 +100,7 @@ const Footer = () => {
     <FooterContainer>
       <FooterContent>
         <Copyright>
-          © {currentYear} Your Name. All rights reserved. Crafted with <Heart><FaHeart /></Heart> in React.
+          © {currentYear} Rishabh Ahuja. All rights reserved. Crafted with <Heart><FaHeart /></Heart> in React.
         </Copyright>
         
         <FooterLinks>
