@@ -1,7 +1,8 @@
 #  Welcome  
 🥚 Crack open insights. Scramble the code. Serve with Cloud 🍳 
 
-![Alt Text](https://github.com/sindresorhus/sindresorhus/blob/main/welcome-header.gif)
+<!-- ![Alt Text](https://github.com/sindresorhus/sindresorhus/blob/main/welcome-header.gif)-->
+![Alt Text](https://user-images.githubusercontent.com/74038190/226190894-18e959ba-d458-4a94-ac44-790190f2a947.gif)
 
 Hi, I’m **Rishabh Ahuja** – part data alchemist, part cloud crafter, and full-time Pythonista 🐍.  
 I believe data is the new egg — raw, full of potential, and capable of transforming everything when handled right.
