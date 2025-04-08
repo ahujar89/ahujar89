@@ -10,6 +10,21 @@ const FooterContainer = styled.footer`
   border-top: 1px solid var(--border-color);
 `;
 
+const FooterLogo = styled.img`
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 2rem;
+  padding: 2px;
+  background: var(--card-bg);
+  
+  @media (max-width: 768px) {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+`;
+
 const FooterContent = styled.div`
   max-width: 1200px;
   margin: 0 auto;
@@ -22,6 +37,16 @@ const FooterContent = styled.div`
     flex-direction: column;
     gap: 1.5rem;
     text-align: center;
+  }
+`;
+
+const FooterLeft = styled.div`
+  display: flex;
+  align-items: center;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
   }
 `;
 
@@ -99,17 +124,14 @@ const Footer = () => {
   return (
     <FooterContainer>
       <FooterContent>
-        <Copyright>
-          © {currentYear} Rishabh Ahuja. All rights reserved. Crafted with <Heart><FaHeart /></Heart> in React.
-        </Copyright>
+        <FooterLeft>
+        <FooterLogo src="/images/rishabh.jpg" alt="Logo" />
+          <Copyright>
+            © {currentYear} Rishabh Ahuja. All rights reserved. Crafted with <Heart><FaHeart /></Heart> in React.
+          </Copyright>
+        </FooterLeft>
         
-        <FooterLinks>
-          <FooterLink href="#home">Home</FooterLink>
-          <FooterLink href="#about">About</FooterLink>
-          <FooterLink href="#skills">Skills</FooterLink>
-          <FooterLink href="#projects">Projects</FooterLink>
-          <FooterLink href="#contact">Contact</FooterLink>
-        </FooterLinks>
+        
       </FooterContent>
       
       <BackToTop

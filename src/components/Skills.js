@@ -7,28 +7,18 @@ import { SiJavascript, SiTypescript, SiNextdotjs, SiTailwindcss, SiMicrosoftazur
 import { DiMysql } from 'react-icons/di';
 
 const SkillsSection = styled.section`
-  padding: 8rem 2rem;
+  padding: 10rem 2rem;  // Increased from 8rem
   background-color: var(--background-light-accent);
   position: relative;
   overflow: hidden;
-  
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(78, 123, 255, 0.05), transparent);
-    z-index: 0;
-  }
 `;
 
 const Container = styled.div`
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   position: relative;
   z-index: 1;
+  padding: 0 2rem;
 `;
 
 const SectionHeader = styled.div`
@@ -62,23 +52,27 @@ const SectionSubtitle = styled(motion.p)`
   margin-top: 1.5rem;
 `;
 
+// Update the SkillsContainer spacing
 const SkillsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  gap: 6rem;  // Increased from 4rem
+  padding: 2rem 0;
 `;
 
+// Update the SkillsRow spacing
 const SkillsRow = styled(motion.div)`
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 3rem;  // Increased from 2rem
   justify-content: center;
+  padding: 0 1rem;
 `;
 
 const SkillCategory = styled(motion.div)`
   background: rgba(255, 255, 255, 0.9);
   border-radius: 15px;
-  padding: 2.5rem;
+  padding: 3rem;  // Increased from 2.5rem
   backdrop-filter: blur(5px);
   border: none;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
@@ -86,29 +80,8 @@ const SkillCategory = styled(motion.div)`
   position: relative;
   overflow: hidden;
   flex: 1;
-  min-width: 300px;
-  max-width: 400px;
-  
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
-  }
-  
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-    
-    &:before {
-      opacity: 1;
-    }
-  }
+  min-width: 320px;  // Increased from 300px
+  max-width: 420px;  // Increased from 400px
 `;
 
 const CategoryTitle = styled.h3`
@@ -132,17 +105,17 @@ const SkillsList = styled.ul`
   list-style: none;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));  // Increased from 120px
+  gap: 2rem;  // Increased from 1.5rem
 `;
 
 const SkillItem = styled(motion.li)`
   display: flex;
   align-items: center;
-  gap: 0.8rem;
+  gap: 1rem;  // Increased from 0.8rem
   font-size: 1.1rem;
   color: var(--text-dark);
-  padding: 0.8rem;
+  padding: 1rem;  // Increased from 0.8rem
   background: rgba(240, 240, 245, 0.8);
   border-radius: 8px;
   transition: all 0.3s ease;

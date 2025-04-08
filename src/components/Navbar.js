@@ -39,7 +39,6 @@ const Logo = styled(motion.a)`
     height: 40px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid var(--primary-color);
     transition: all 0.3s ease;
   }
   
