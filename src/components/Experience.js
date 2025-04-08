@@ -100,13 +100,36 @@ const LogoContainer = styled.div`
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background: white;
-  padding: 1rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
+  
+  &:before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    z-index: 0;
+  }
+  
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    background: var(--card-bg);
+    z-index: 1;
+  }
   
   ${ExperienceCard}:hover & {
     transform: scale(1.1);
@@ -114,9 +137,13 @@ const LogoContainer = styled.div`
 `;
 
 const CompanyLogo = styled.img`
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 90%;
   object-fit: contain;
+  border-radius: 50%;
+  position: relative;
+  z-index: 2;
+  padding: 0.5rem;
 `;
 
 const CompanyInfo = styled.div`

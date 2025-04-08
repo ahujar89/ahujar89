@@ -210,7 +210,7 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
   
-  const navItems = ['Home', 'About', 'Education', 'Experience', 'Skills', 'Projects', 'Contact'];
+  const navItems = ['Home', 'About', 'Education', 'Experience', 'Skills', 'Projects', 'Certifications','Contact'];
   
   // Sophisticated animation variants for the logo
   const logoVariants = {

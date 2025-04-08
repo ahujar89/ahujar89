@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaReact, FaNodeJs, FaPython, FaGitAlt, FaDatabase, FaCloud, FaRProject, FaJira, FaGithub } from 'react-icons/fa';
-import { SiJavascript, SiTypescript, SiNextdotjs, SiTailwindcss, SiMicrosoftazure, SiDocker, SiPowerbi, SiApachespark, SiGithubactions } from 'react-icons/si';
+import { SiJavascript, SiTypescript, SiNextdotjs, SiTailwindcss, SiMicrosoftazure, SiDocker, SiPowerbi, SiApachespark, SiGithubactions, SiDjango } from 'react-icons/si';
 import { DiMysql } from 'react-icons/di';
 
 const SkillsSection = styled.section`
@@ -206,7 +206,7 @@ const Skills = () => {
         { name: 'Node.js', icon: <FaNodeJs /> },
         { name: 'Python', icon: <FaPython /> },
         { name: 'RESTful APIs', icon: <FaDatabase /> },
-        { name: 'GraphQL', icon: <FaDatabase /> },
+        { name: 'Django', icon: <SiDjango /> },
         { name: 'MongoDB', icon: <FaDatabase /> }
       ]
     },
