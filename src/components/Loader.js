@@ -41,7 +41,7 @@ const Loader = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        PORTFOLIO
+        🙈 Trying my best to impress you... just a sec!
       </LogoContainer>
       <ProgressBar>
         <Progress
