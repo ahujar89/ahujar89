@@ -10,15 +10,8 @@ const AboutSection = styled.section`
   position: relative;
   overflow: hidden;
   
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(78, 123, 255, 0.05), transparent);
-    z-index: 0;
+  @media (max-width: 768px) {
+    padding: 6rem 1rem;
   }
 `;
 
@@ -27,6 +20,11 @@ const Container = styled.div`
   margin: 0 auto;
   position: relative;
   z-index: 1;
+  padding: 0 1rem;
+  
+  @media (max-width: 768px) {
+    padding: 0 1.5rem;
+  }
 `;
 
 const AboutContent = styled.div`
@@ -38,6 +36,7 @@ const AboutContent = styled.div`
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     gap: 3rem;
+    text-align: center;
   }
 `;
 
@@ -45,6 +44,10 @@ const AboutText = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  
+  @media (max-width: 768px) {
+    align-items: center;
+  }
 `;
 
 const SectionTitle = styled(motion.h2)`
@@ -54,14 +57,14 @@ const SectionTitle = styled(motion.h2)`
   display: inline-block;
   color: var(--text-dark);
   
-  &:after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -10px;
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin: 0 auto;
+    
+    &:after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
   }
 `;
 
@@ -69,6 +72,11 @@ const AboutParagraph = styled(motion.p)`
   font-size: 1.1rem;
   line-height: 1.8;
   color: var(--text-dark);
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    text-align: center;
+  }
 `;
 
 const AboutImage = styled(motion.div)`
@@ -80,31 +88,15 @@ const AboutImage = styled(motion.div)`
   box-shadow: var(--shadow);
   margin: 0 auto;
   
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(78, 123, 255, 0.3), rgba(0, 206, 201, 0.3));
-    opacity: 0.5;
-    z-index: 1;
-    mix-blend-mode: overlay;
+  @media (max-width: 768px) {
+    width: 280px;
+    height: 280px;
+    order: -1; // Moves image to top on mobile
   }
   
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;
-    filter: contrast(1.1) brightness(1.05) opacity(0.9);
-    transition: all 0.3s ease;
-    
-    &:hover {
-      transform: scale(1.05);
-      filter: contrast(1.2) brightness(1.1) opacity(1);
-    }
+  @media (max-width: 480px) {
+    width: 240px;
+    height: 240px;
   }
 `;
 
@@ -122,6 +114,12 @@ const DownloadButton = styled(motion.a)`
   align-self: flex-start;
   box-shadow: var(--shadow);
   transition: all 0.3s ease;
+  
+  @media (max-width: 768px) {
+    align-self: center;
+    padding: 1rem 2rem; // Larger touch target for mobile
+    margin-top: 1.5rem;
+  }
   
   &:hover {
     background: var(--secondary-color);

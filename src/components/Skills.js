@@ -7,10 +7,14 @@ import { SiJavascript, SiTypescript, SiNextdotjs, SiTailwindcss, SiMicrosoftazur
 import { DiMysql } from 'react-icons/di';
 
 const SkillsSection = styled.section`
-  padding: 10rem 2rem;  // Increased from 8rem
+  padding: 10rem 2rem;
   background-color: var(--background-light-accent);
   position: relative;
   overflow: hidden;
+  
+  @media (max-width: 768px) {
+    padding: 6rem 1rem;
+  }
 `;
 
 const Container = styled.div`
@@ -18,7 +22,11 @@ const Container = styled.div`
   margin: 0 auto;
   position: relative;
   z-index: 1;
-  padding: 0 2rem;
+  padding: 0 1rem;
+  
+  @media (max-width: 768px) {
+    padding: 0 0.5rem;
+  }
 `;
 
 const SectionHeader = styled.div`
@@ -33,11 +41,16 @@ const SectionTitle = styled(motion.h2)`
   display: inline-block;
   color: var(--text-dark);
   
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+  
   &:after {
     content: '';
     position: absolute;
-    left: 0;
+    left: 50%;
     bottom: -10px;
+    transform: translateX(-50%);
     width: 60px;
     height: 3px;
     background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
@@ -50,29 +63,43 @@ const SectionSubtitle = styled(motion.p)`
   max-width: 600px;
   margin: 0 auto;
   margin-top: 1.5rem;
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    padding: 0 1rem;
+    margin-top: 1rem;
+  }
 `;
 
-// Update the SkillsContainer spacing
 const SkillsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 6rem;  // Increased from 4rem
+  gap: 6rem;
   padding: 2rem 0;
+  
+  @media (max-width: 768px) {
+    gap: 3rem;
+    padding: 1rem 0;
+  }
 `;
 
-// Update the SkillsRow spacing
 const SkillsRow = styled(motion.div)`
   display: flex;
   flex-wrap: wrap;
-  gap: 3rem;  // Increased from 2rem
+  gap: 3rem;
   justify-content: center;
   padding: 0 1rem;
+  
+  @media (max-width: 768px) {
+    gap: 2rem;
+    padding: 0 0.5rem;
+  }
 `;
 
 const SkillCategory = styled(motion.div)`
   background: rgba(255, 255, 255, 0.9);
   border-radius: 15px;
-  padding: 3rem;  // Increased from 2.5rem
+  padding: 3rem;
   backdrop-filter: blur(5px);
   border: none;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
@@ -80,8 +107,14 @@ const SkillCategory = styled(motion.div)`
   position: relative;
   overflow: hidden;
   flex: 1;
-  min-width: 320px;  // Increased from 300px
-  max-width: 420px;  // Increased from 400px
+  min-width: 320px;
+  max-width: 420px;
+  
+  @media (max-width: 768px) {
+    min-width: 100%;
+    padding: 1.5rem;
+    margin: 0 0.5rem;
+  }
 `;
 
 const CategoryTitle = styled.h3`
@@ -91,6 +124,11 @@ const CategoryTitle = styled.h3`
   align-items: center;
   gap: 1rem;
   color: var(--primary-color);
+  
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+  }
 `;
 
 const CategoryIcon = styled.div`
@@ -105,20 +143,31 @@ const SkillsList = styled.ul`
   list-style: none;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));  // Increased from 120px
-  gap: 2rem;  // Increased from 1.5rem
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 2rem;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
 `;
 
 const SkillItem = styled(motion.li)`
   display: flex;
   align-items: center;
-  gap: 1rem;  // Increased from 0.8rem
+  gap: 1rem;
   font-size: 1.1rem;
   color: var(--text-dark);
-  padding: 1rem;  // Increased from 0.8rem
+  padding: 1rem;
   background: rgba(240, 240, 245, 0.8);
   border-radius: 8px;
   transition: all 0.3s ease;
+  
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    padding: 0.8rem;
+    gap: 0.5rem;
+  }
   
   &:hover {
     background: rgba(78, 123, 255, 0.1);
@@ -132,6 +181,10 @@ const SkillIcon = styled.div`
   color: var(--secondary-color);
   display: flex;
   align-items: center;
+  
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
 `;
 
 const SkillName = styled.span`

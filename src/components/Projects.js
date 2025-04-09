@@ -20,6 +20,9 @@ const ProjectsSection = styled.section`
     background: linear-gradient(135deg, rgba(78, 123, 255, 0.05), transparent);
     z-index: 0;
   }
+    @media (max-width: 768px) {
+    padding: 4rem 1rem;
+  }
 `;
 
 const Container = styled.div`
@@ -27,6 +30,10 @@ const Container = styled.div`
   margin: 0 auto;
   position: relative;
   z-index: 1;
+  
+  @media (max-width: 768px) {
+    padding: 0 0.5rem;
+  }
 `;
 
 const SectionHeader = styled.div`
@@ -51,6 +58,9 @@ const SectionTitle = styled(motion.h2)`
     height: 3px;
     background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
   }
+    @media (max-width: 768px) {
+    font-size: 2rem;
+  }
 `;
 
 const SectionSubtitle = styled(motion.p)`
@@ -59,6 +69,12 @@ const SectionSubtitle = styled(motion.p)`
   max-width: 600px;
   margin: 0 auto;
   margin-top: 1.5rem;
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    padding: 0 1rem;
+    margin-top: 1rem;
+  }
 `;
 
 const ProjectsGrid = styled.div`
@@ -66,6 +82,12 @@ const ProjectsGrid = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 2.5rem;
   padding: 1rem;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 0.5rem;
+  }
 `;
 
 const ProjectCard = styled(motion.div)`
@@ -82,6 +104,13 @@ const ProjectCard = styled(motion.div)`
     transform: translateY(-10px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
   }
+     @media (max-width: 768px) {
+    transform: none;
+    
+    &:hover {
+      transform: translateY(-5px);
+    }
+  }
 `;
 
 const ProjectImage = styled.div`
@@ -96,6 +125,9 @@ const ProjectImage = styled.div`
     object-fit: cover;
     transition: transform 0.5s ease;
   }
+  @media (max-width: 768px) {
+    height: 180px;
+  }
   
   ${ProjectCard}:hover & img {
     transform: scale(1.05);
@@ -107,12 +139,20 @@ const ProjectContent = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
+  
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
 `;
 
 const ProjectTitle = styled.h3`
   font-size: 1.5rem;
   margin-bottom: 0.8rem;
   color: var(--text-dark);
+  
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+  }
 `;
 
 const ProjectDescription = styled.p`
@@ -121,6 +161,11 @@ const ProjectDescription = styled.p`
   color: var(--text-medium);
   margin-bottom: 1.5rem;
   flex: 1;
+  
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
 `;
 
 const TechStack = styled.div`
@@ -128,6 +173,11 @@ const TechStack = styled.div`
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-bottom: 1.5rem;
+  
+  @media (max-width: 768px) {
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
 `;
 
 const TechTag = styled.span`
@@ -136,7 +186,11 @@ const TechTag = styled.span`
   padding: 0.3rem 0.8rem;
   border-radius: 20px;
   font-size: 0.85rem;
-  font-weight: 500;
+  
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.6rem;
+  }
 `;
 
 const ProjectLinks = styled.div`
@@ -161,6 +215,14 @@ const ProjectLink = styled.a`
   
   svg {
     font-size: 1.2rem;
+  }
+    @media (max-width: 768px) {
+    font-size: 0.9rem;
+    padding: 0.5rem 0;
+    
+    svg {
+      font-size: 1rem;
+    }
   }
 `;
 

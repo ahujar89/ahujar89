@@ -40,12 +40,22 @@ const HeroSection = styled.section`
     z-index: 0;
     filter: grayscale(100%) contrast(120%);
   }
+    @media (max-width: 768px) {
+    padding: 6rem 1rem;
+    align-items: center;
+    text-align: center;
+  }
 `;
 
 const HeroContent = styled(motion.div)`
   max-width: 800px;
   z-index: 2;
   position: relative;
+  
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 0 1rem;
+  }
 `;
 
 const SmallText = styled(motion.p)`
@@ -53,6 +63,11 @@ const SmallText = styled(motion.p)`
   color: var(--primary-color);
   margin-bottom: 1.5rem;
   font-weight: 500;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
 `;
 
 const Name = styled(motion.h1)`
@@ -63,7 +78,8 @@ const Name = styled(motion.h1)`
   color: var(--text-dark);
   
   @media (max-width: 768px) {
-    font-size: 3rem;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
   }
 `;
 
@@ -74,7 +90,9 @@ const Title = styled(motion.h2)`
   color: var(--text-dark);
   
   @media (max-width: 768px) {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    padding: 0 0.5rem;
   }
 `;
 
@@ -84,6 +102,23 @@ const Description = styled(motion.p)`
   margin-bottom: 2rem;
   max-width: 600px;
   color: var(--text-dark);
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 0 0.5rem;
+  }
+`;
+
+const ButtonContainer = styled(motion.div)`
+  display: flex;
+  gap: 1rem;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.8rem;
+  }
 `;
 
 const Button = styled(motion.a)`
@@ -104,12 +139,26 @@ const Button = styled(motion.a)`
     opacity: 0.9;
     color: white;
   }
+
+   @media (max-width: 768px) {
+    display: block;
+    width: 100%;
+    margin-right: 0;
+    padding: 1rem;
+    font-size: 0.95rem;
+    text-align: center;
+  }
 `;
 
 const SocialLinks = styled(motion.div)`
   display: flex;
   gap: 1.5rem;
   margin-top: 2rem;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+    margin-top: 1.5rem;
+  }
 `;
 
 const SocialLink = styled.a`
@@ -129,6 +178,12 @@ const SocialLink = styled.a`
     background: var(--primary-color);
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(108, 92, 231, 0.3);
+  }
+
+   @media (max-width: 768px) {
+    width: 35px;
+    height: 35px;
+    font-size: 1.1rem;
   }
 `;
 
@@ -215,27 +270,28 @@ const Hero = () => {
             What began as a spark of curiosity has grown into a passion for solving real problems through technology. I’m Rishabh — part builder, part analyst, always curious and I create digital solutions that are thoughtful, data-informed, and user-first.        </Description>
         
         <div>
-          <Button
-            href="#projects"
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Explore my work
-          </Button>
-          
-          <Button
-            href="#contact"
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Reach out, I’d love to connect!
-          </Button>
+         
+      <ButtonContainer
+        initial={{ opacity: 0, y: 20 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.5, delay: 0.4 }}
+      >
+        <Button
+          href="#projects"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          Explore my work
+        </Button>
+        
+        <Button
+          href="#contact"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          Reach out, I'd love to connect!
+        </Button>
+      </ButtonContainer>
         </div>
         
         <SocialLinks
