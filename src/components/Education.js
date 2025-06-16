@@ -198,7 +198,7 @@ const Education = () => {
               <UniversityDegree>Master of Applied Computing, Minor in Business Administration</UniversityDegree>
               <UniversityGrade>
                 <FaStar />
-                <span>Grade: 89.67%</span>
+                <span>Grade: 87.67%</span>
               </UniversityGrade>
               <UniversityDescription>
                 Enhanced my expertise in AI, data analytics, cloud computing, and cybersecurity. Combined with a minor in Business Administration, this program has equipped me with the ability to integrate technical innovation with business strategy. With hands-on experience in MongoDB, Apache Spark, Azure, and machine learning, I am well-prepared to develop AI-driven, data-centric solutions that enhance efficiency and drive business growth—an invaluable asset for solving complex industry challenges.
