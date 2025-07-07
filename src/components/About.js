@@ -170,7 +170,7 @@ const About = () => {
             >
                 Beyond the screen, I draw inspiration from everyday moments — observing how people engage with technology, chasing ideas that fuel curiosity, and bringing a thoughtful, creative approach to every project. I bring a unique mix of perspective, passion, and persistence — and I'm here to build what matters.                </AboutParagraph>
             <DownloadButton
-              href="https://drive.google.com/file/d/1g7xL-zyvlanN_cuTrN1bMe1NPDP92pZp/view"
+              href="https://drive.google.com/file/d/15YgYItRvH9wB8g7gVNsnSaSTYf_sTPvK/view?usp=drive_link"
               download
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
