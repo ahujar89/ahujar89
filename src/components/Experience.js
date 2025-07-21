@@ -27,6 +27,7 @@ const Container = styled.div`
   z-index: 1;
 `;
 
+
 const SectionHeader = styled.div`
   text-align: center;
   margin-bottom: 5rem;
@@ -199,6 +200,13 @@ const Experience = () => {
   });
 
   const experiences = [
+    {
+      company: "Jaguar Land Rover.",
+      logo: "/images/JLRlogo.png",
+      role: "Data Science Intern",
+      period: "May 2025-Aug 2025",
+      description: "At JLR, I supported end‑to‑end analytics by designing and implementing scalable data pipelines to ingest, clean, and transform large image and sensor datasets, and by developing evaluation frameworks that applied statistical metrics to benchmark model performance. I then automated reporting workflows and built intuitive dashboards to communicate insights to engineers and product managers, while documenting methodologies to ensure reproducibility and streamline future data science efforts."
+    },
     {
       company: "Infosys Ltd.",
       logo: "/images/infy-logo.jpg",
