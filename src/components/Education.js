@@ -198,7 +198,7 @@ const Education = () => {
               <UniversityDegree>Master of Applied Computing, Minor in Business Administration</UniversityDegree>
               <UniversityGrade>
                 <FaStar />
-                <span>Grade: 87.67%</span>
+                <span>Grade: 88%</span>
               </UniversityGrade>
               <UniversityDescription>
                 Enhanced my expertise in AI, data analytics, cloud computing, and cybersecurity. Combined with a minor in Business Administration, this program has equipped me with the ability to integrate technical innovation with business strategy. With hands-on experience in MongoDB, Apache Spark, Azure, and machine learning, I am well-prepared to develop AI-driven, data-centric solutions that enhance efficiency and drive business growth—an invaluable asset for solving complex industry challenges.
@@ -223,7 +223,7 @@ const Education = () => {
               <UniversityDegree>Bachelor of Technology in Computer Science and Engineering</UniversityDegree>
               <UniversityGrade>
                 <FaStar />
-                <span>Grade: 80.2%</span>
+                <span>Grade: 80%</span>
               </UniversityGrade>
               <UniversityDescription>
                 I built a strong foundation in software development, data structures, and algorithms. As the VP of the Technology Club, I honed my leadership and problem-solving skills while working on innovative projects. My coursework and hands-on experience helped me develop expertise in programming, database management, and system optimization, laying the groundwork for my career in software engineering and data-driven solutions.
