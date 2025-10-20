@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 
 // Component imports
 import Navbar from './components/Navbar';
+import SplashCursor from './components/SplashCursor';
 import Hero from './components/Hero';
 import About from './components/About';
 import Education from './components/Education';
@@ -18,7 +19,7 @@ import GlobalStyles from './styles/GlobalStyles';
 
 const AppContainer = styled.div`
   position: relative;
-  background: var(--background-dark);
+  background: transparent;
 `;
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
     <>
       <GlobalStyles />
       <AppContainer>
+        <SplashCursor intensity={9} baseSize={80} blur={26} fade={0.12} />
         {loading ? (
           <Loader />
         ) : (

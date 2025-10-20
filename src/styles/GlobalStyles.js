@@ -46,7 +46,7 @@ const GlobalStyles = createGlobalStyle`
   
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: var(--background-dark);
+    background-color: #ffffff;
     color: var(--text-light);
     line-height: 1.6;
     overflow-x: hidden;
