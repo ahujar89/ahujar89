@@ -33,6 +33,7 @@ const Logo = styled(motion.a)`
   z-index: 10;
   display: flex;
   align-items: center;
+  cursor: pointer;
   
   img {
     width: 40px;
@@ -40,10 +41,13 @@ const Logo = styled(motion.a)`
     border-radius: 50%;
     object-fit: cover;
     transition: all 0.3s ease;
+    border: 2px solid transparent;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color)) border-box;
+    box-shadow: 0 0 10px rgba(78, 123, 255, 0.3);
   }
   
   &:hover img {
-    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(78, 123, 255, 0.6), 0 0 40px rgba(54, 197, 240, 0.4);
     border-color: var(--secondary-color);
   }
   
@@ -211,23 +215,53 @@ const Navbar = () => {
   
   const navItems = ['Home', 'About', 'Education', 'Experience', 'Skills', 'Projects', 'Certifications','Contact'];
   
-  // Sophisticated animation variants for the logo
+  // Enhanced bouncy and fluid logo animations
   const logoVariants = {
     initial: { 
       scale: 1,
       rotate: 0,
-      y: 0
+      y: 0,
+      filter: "hue-rotate(0deg)"
     },
     animate: { 
-      scale: [1, 1.03, 1.05, 1.03, 1],
-      rotate: [0, -2, 2, -1, 0],
-      y: [0, -2, 0, 2, 0],
+      scale: [1, 1.05, 1.08, 1.05, 1],
+      rotate: [0, -3, 3, -2, 0],
+      y: [0, -3, 0, 3, 0],
+      filter: [
+        "hue-rotate(0deg)",
+        "hue-rotate(10deg)",
+        "hue-rotate(-5deg)",
+        "hue-rotate(15deg)",
+        "hue-rotate(0deg)"
+      ],
       transition: { 
-        duration: 6,
+        duration: 4,
         repeat: Infinity,
         ease: "easeInOut",
         times: [0, 0.25, 0.5, 0.75, 1]
       }
+    },
+    hover: {
+      scale: [1.2, 1.25, 1.2],
+      rotate: [0, 10, -10, 5, 0],
+      y: [0, -5, 5, -3, 0],
+      filter: [
+        "hue-rotate(0deg)",
+        "hue-rotate(30deg)",
+        "hue-rotate(-20deg)",
+        "hue-rotate(40deg)",
+        "hue-rotate(0deg)"
+      ],
+      transition: {
+        duration: 0.8,
+        repeat: Infinity,
+        ease: "easeInOut"
+      }
+    },
+    tap: {
+      scale: 0.9,
+      rotate: 15,
+      transition: { duration: 0.1 }
     }
   };
   
@@ -244,12 +278,17 @@ const Navbar = () => {
           variants={logoVariants}
           initial="initial"
           animate="animate"
-          whileHover={{ 
-            scale: 1.15, 
-            rotate: 5,
-            transition: { duration: 0.3 }
+          whileHover="hover"
+          whileTap="tap"
+          onHoverStart={() => {
+            // Trigger fluid splash effect on hover
+            const event = new MouseEvent('mousedown', {
+              clientX: window.innerWidth * 0.1,
+              clientY: 50,
+              bubbles: true
+            });
+            document.dispatchEvent(event);
           }}
-          whileTap={{ scale: 0.95 }}
         >
           <img src="/images/rishabh.jpg" alt="Rishabh Ahuja" />
         </Logo>
