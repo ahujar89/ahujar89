@@ -306,7 +306,7 @@ const Projects = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
           >
-            Projects
+            Academic & Personal Projects
           </SectionTitle>
           <SectionSubtitle
             initial={{ opacity: 0, y: 20 }}

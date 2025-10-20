@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { FaReact, FaNodeJs, FaPython, FaGitAlt, FaDatabase, FaCloud, FaRProject, FaJira, FaGithub } from 'react-icons/fa';
+import { FaReact, FaNodeJs, FaPython, FaGitAlt, FaDatabase, FaCloud, FaRProject, FaJira, FaGithub, FaProjectDiagram, FaUsers, FaChartLine, FaTasks, FaRoute } from 'react-icons/fa';
 import { SiJavascript, SiTypescript, SiNextdotjs, SiTailwindcss, SiMicrosoftazure, SiDocker, SiPowerbi, SiApachespark, SiGithubactions, SiDjango } from 'react-icons/si';
 import { DiMysql } from 'react-icons/di';
 
@@ -143,7 +143,7 @@ const SkillsList = styled.ul`
   list-style: none;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 2rem;
   
   @media (max-width: 768px) {
@@ -190,6 +190,7 @@ const SkillIcon = styled.div`
 const SkillName = styled.span`
   flex: 1;
   font-weight: 500;
+  word-break: break-word;
 `;
 
 const container = {
@@ -259,14 +260,13 @@ const Skills = () => {
       ]
     },
     {
-      title: 'Development Tools',
-      icon: <FaGitAlt />,
+      title: 'Product & Project Mgmt',
+      icon: <FaProjectDiagram />,
       skills: [
-        { name: 'Git', icon: <FaGitAlt /> },
-        { name: 'GitHub', icon: <FaGithub /> },
-        { name: 'JIRA', icon: <FaJira /> },
-        { name: 'Agile', icon: <FaGitAlt /> },
-        { name: 'Scrum', icon: <FaGitAlt /> }
+        { name: 'Roadmap Planning', icon: <FaRoute /> },
+        { name: 'Stakeholder Management', icon: <FaUsers /> },
+        { name: 'Data-Driven Decision Making', icon: <FaChartLine /> },
+        { name: 'Agile Project Execution', icon: <FaTasks /> }
       ]
     }
   ];
