@@ -41,7 +41,7 @@ const Loader = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        🙈 Trying my best to impress you... just a sec!
+        Just a sec… putting on the final touches! 🛠️
       </LogoContainer>
       <ProgressBar>
         <Progress

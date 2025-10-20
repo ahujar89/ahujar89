@@ -201,7 +201,7 @@ const Experience = () => {
 
   const experiences = [
     {
-      company: "Jaguar Land Rover.",
+      company: "Jaguar Land Rover",
       logo: "/images/JLRlogo.png",
       role: "Data Science Intern",
       period: "May 2025-Aug 2025",

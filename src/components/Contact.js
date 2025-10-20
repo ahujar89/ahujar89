@@ -457,7 +457,7 @@ const Contact = () => {
                 <ContactIcon>
                   <FaMapMarkerAlt />
                 </ContactIcon>
-                <ContactText>Windsor, ON, Canada</ContactText>
+                <ContactText>Toronto, ON, Canada</ContactText>
               </ContactDetail>
               
               <ContactDetail>

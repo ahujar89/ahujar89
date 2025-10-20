@@ -223,7 +223,7 @@ const Education = () => {
               <UniversityDegree>Bachelor of Technology in Computer Science and Engineering</UniversityDegree>
               <UniversityGrade>
                 <FaStar />
-                <span>Grade: 80.2%</span>
+                <span>Grade: 80%</span>
               </UniversityGrade>
               <UniversityDescription>
                 I built a strong foundation in software development, data structures, and algorithms. As the VP of the Technology Club, I honed my leadership and problem-solving skills while working on innovative projects. My coursework and hands-on experience helped me develop expertise in programming, database management, and system optimization, laying the groundwork for my career in software engineering and data-driven solutions.
