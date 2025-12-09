@@ -216,6 +216,27 @@ const Skills = () => {
   
   const skillCategories = [
     {
+      title: 'Product & Project Mgmt',
+      icon: <FaProjectDiagram />,
+      skills: [
+        { name: 'Roadmap Planning', icon: <FaRoute /> },
+        { name: 'Stakeholder Management', icon: <FaUsers /> },
+        { name: 'Data-Driven Decision Making', icon: <FaChartLine /> },
+        { name: 'Agile Project Execution', icon: <FaTasks /> }
+      ]
+    },
+    {
+      title: 'Data Analytics',
+      icon: <FaDatabase />,
+      skills: [
+        { name: 'SQL', icon: <DiMysql /> },
+        { name: 'R', icon: <FaRProject /> },
+        { name: 'Power BI', icon: <SiPowerbi /> },
+        { name: 'PySpark', icon: <SiApachespark /> },
+        { name: 'ETL Pipelines', icon: <FaDatabase /> }
+      ]
+    },
+    {
       title: 'Frontend',
       icon: <FaReact />,
       skills: [
@@ -238,17 +259,6 @@ const Skills = () => {
       ]
     },
     {
-      title: 'Data Analytics',
-      icon: <FaDatabase />,
-      skills: [
-        { name: 'SQL', icon: <DiMysql /> },
-        { name: 'R', icon: <FaRProject /> },
-        { name: 'Power BI', icon: <SiPowerbi /> },
-        { name: 'PySpark', icon: <SiApachespark /> },
-        { name: 'ETL Pipelines', icon: <FaDatabase /> }
-      ]
-    },
-    {
       title: 'DevOps & Cloud',
       icon: <FaCloud />,
       skills: [
@@ -259,16 +269,6 @@ const Skills = () => {
         { name: 'Linux', icon: <FaCloud /> }
       ]
     },
-    {
-      title: 'Product & Project Mgmt',
-      icon: <FaProjectDiagram />,
-      skills: [
-        { name: 'Roadmap Planning', icon: <FaRoute /> },
-        { name: 'Stakeholder Management', icon: <FaUsers /> },
-        { name: 'Data-Driven Decision Making', icon: <FaChartLine /> },
-        { name: 'Agile Project Execution', icon: <FaTasks /> }
-      ]
-    }
   ];
   
   // Group categories into rows of 2-3
