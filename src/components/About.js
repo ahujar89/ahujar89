@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { FaDownload } from 'react-icons/fa';
 
 const AboutSection = styled.section`
   padding: 8rem 2rem;
@@ -97,38 +96,6 @@ const AboutImage = styled(motion.div)`
   @media (max-width: 480px) {
     width: 240px;
     height: 240px;
-  }
-`;
-
-const DownloadButton = styled(motion.a)`
-  display: inline-flex;
-  align-items: center;
-  gap: 0.8rem;
-  background: var(--primary-color);
-  color: white;
-  padding: 0.8rem 1.5rem;
-  border-radius: 8px;
-  font-weight: 500;
-  text-decoration: none;
-  margin-top: 1rem;
-  align-self: flex-start;
-  box-shadow: var(--shadow);
-  transition: all 0.3s ease;
-  
-  @media (max-width: 768px) {
-    align-self: center;
-    padding: 1rem 2rem; // Larger touch target for mobile
-    margin-top: 1.5rem;
-  }
-  
-  &:hover {
-    background: var(--secondary-color);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  }
-  
-  svg {
-    font-size: 1.2rem;
   }
 `;
 

@@ -55,28 +55,6 @@ const Copyright = styled.p`
   font-size: 0.9rem;
 `;
 
-const FooterLinks = styled.div`
-  display: flex;
-  gap: 2rem;
-  
-  @media (max-width: 768px) {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-  }
-`;
-
-const FooterLink = styled.a`
-  color: var(--text-medium);
-  font-size: 0.9rem;
-  text-decoration: none;
-  transition: color 0.3s ease;
-  
-  &:hover {
-    color: var(--primary-color);
-  }
-`;
-
 const BackToTop = styled(motion.div)`
   position: absolute;
   right: 2rem;

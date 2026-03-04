@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { FaGraduationCap, FaMapMarkerAlt, FaStar } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaStar } from 'react-icons/fa';
 
 const EducationSection = styled.section`
   padding: 8rem 2rem;
@@ -103,10 +103,6 @@ const UniversityImage = styled.div`
   }
 `;
 
-const EducationContent = styled.div`
-  flex: 1;
-`;
-
 const UniversityInfo = styled.div`
   display: flex;
   flex-direction: column;
@@ -135,13 +131,6 @@ const UniversityDegree = styled.h4`
   font-size: 1.2rem;
   color: var(--text-dark);
   margin: 0.5rem 0;
-`;
-
-const UniversityYear = styled.p`
-  font-size: 1rem;
-  color: var(--text-medium);
-  margin-bottom: 1rem;
-  font-weight: 500;
 `;
 
 const UniversityGrade = styled.div`
