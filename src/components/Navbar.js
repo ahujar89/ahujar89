@@ -10,8 +10,10 @@ const Nav = styled.nav`
   z-index: 1000;
   padding: 1rem 0;
   transition: all 0.3s ease;
-  background-color: ${props => props.scrolled ? 'rgba(255, 255, 255, 0.95)' : 'transparent'};
-  box-shadow: ${props => props.scrolled ? '0 2px 10px rgba(0, 0, 0, 0.1)' : 'none'};
+  background-color: ${props => props.scrolled ? 'rgba(13, 13, 18, 0.85)' : 'transparent'};
+  backdrop-filter: ${props => props.scrolled ? 'blur(16px)' : 'none'};
+  -webkit-backdrop-filter: ${props => props.scrolled ? 'blur(16px)' : 'none'};
+  box-shadow: ${props => props.scrolled ? '0 1px 0 rgba(162, 89, 255, 0.15), 0 4px 24px rgba(162, 89, 255, 0.08)' : 'none'};
 `;
 
 const Container = styled.div`
@@ -117,7 +119,8 @@ const MobileMenuButton = styled.div`
   div {
     width: 25px;
     height: 3px;
-    background-color: var(--text-light);
+    background-color: var(--text-dark);
+    background-color: #eaeaea;
     margin: 5px 0;
     transition: all 0.3s ease;
     

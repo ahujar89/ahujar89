@@ -45,12 +45,17 @@ const GlobalStyles = createGlobalStyle`
   }
   
   body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: #ffffff;
-    color: var(--text-light);
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: var(--background-light);
+    color: var(--text-dark);
     line-height: 1.6;
     overflow-x: hidden;
   }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--background-dark); }
+  ::-webkit-scrollbar-thumb { background: var(--primary-dark); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--primary-color); }
   
   h1, h2, h3, h4, h5, h6 {
     font-weight: 700;

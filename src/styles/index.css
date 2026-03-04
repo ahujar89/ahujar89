@@ -1,16 +1,29 @@
 :root {
-  --primary-color: #4e7bff;
-  --secondary-color: #36c5f0;
-  --accent-color: #ff6b6b;
-  --background-light: #f6f9ff;
-  --background-light-accent: #eef4ff;
-  --card-bg: #ffffff;
-  --text-dark: #333;
-  --text-medium: #555;
-  --text-light: #777;
+  /* Dark Mode — Electric Violet & Cyan */
+  --primary-color: #a259ff;
+  --primary-dark: #7c3aed;
+  --primary-light: #c4b5fd;
+  --secondary-color: #00f5d4;
+  --accent-color: #ff6b9d;
+
+  /* Backgrounds */
+  --background-light: #0d0d12;
+  --background-light-accent: #111118;
+  --background-dark: #080810;
+  --background-card: #16161f;
+  --card-bg: #16161f;
+
+  /* Text (inverted for dark mode) */
+  --text-dark: #eaeaea;
+  --text-medium: #9090aa;
+  --text-light: #555570;
+
+  /* UI */
   --transition-speed: 0.3s;
-  --shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-  --border-color: rgba(0, 0, 0, 0.08);
+  --shadow: 0 4px 24px rgba(162, 89, 255, 0.15);
+  --shadow-hover: 0 16px 48px rgba(162, 89, 255, 0.3);
+  --border-color: rgba(162, 89, 255, 0.18);
+  --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
 }
 
 * {
@@ -20,9 +33,7 @@
 }
 
 body {
-  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--background-light);
@@ -31,8 +42,7 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 a {
@@ -42,7 +52,7 @@ a {
 }
 
 a:hover {
-  color: var(--accent-color);
+  color: var(--primary-light);
 }
 
 button {
@@ -67,4 +77,4 @@ section {
   section {
     padding: 3rem 0;
   }
-} 
+}
