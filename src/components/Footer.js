@@ -83,12 +83,6 @@ const BackToTop = styled(motion.div)`
   }
 `;
 
-const Heart = styled.span`
-  color: #ff4f6f;
-  display: inline-block;
-  margin: 0 0.2rem;
-`;
-
 const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({
@@ -96,9 +90,7 @@ const Footer = () => {
       behavior: 'smooth'
     });
   };
-  
-  const currentYear = new Date().getFullYear();
-  
+
   return (
     <FooterContainer>
       <FooterContent>
