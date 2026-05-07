@@ -447,7 +447,7 @@ const Contact = () => {
               </ProfilePhoto>
               <ProfileName>Rishabh Ahuja</ProfileName>
               <ProfileTagline>
-                Software developer & data engineer based in Toronto. Open to full-time roles, freelance work, and interesting conversations.
+                I love problems that don't have obvious solutions. If you're building something ambitious, I'd love to be part of it.
               </ProfileTagline>
               <ContactDetails>
                 <ContactRow href="mailto:ahujar96@gmail.com">

@@ -16,6 +16,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Loader from './components/Loader';
 import GlobalStyles from './styles/GlobalStyles';
+import TerminalMode from './components/TerminalMode';
 
 const AppContainer = styled.div`
   position: relative;
@@ -36,6 +37,7 @@ function App() {
   return (
     <>
       <GlobalStyles />
+      <TerminalMode />
       <AppContainer>
         <SplashCursor intensity={9} baseSize={80} blur={26} fade={0.12} />
         {loading ? (

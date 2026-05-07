@@ -68,6 +68,7 @@ const SmallText = styled(motion.p)`
   text-transform: uppercase;
 `;
 
+
 const Name = styled(motion.h1)`
   font-size: 4.2rem;
   font-weight: 800;
