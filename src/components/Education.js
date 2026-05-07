@@ -6,9 +6,9 @@ import { FaMapMarkerAlt, FaStar } from 'react-icons/fa';
 
 const EducationSection = styled.section`
   padding: 8rem 2rem;
-  background-color: var(--background-light-accent);
+  background-color: var(--background-light);
   position: relative;
-  
+
   &:before {
     content: '';
     position: absolute;
@@ -16,7 +16,7 @@ const EducationSection = styled.section`
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(78, 123, 255, 0.05), transparent);
+    background: linear-gradient(135deg, rgba(225, 29, 72, 0.04), transparent);
     z-index: 0;
   }
 `;
@@ -26,6 +26,7 @@ const Container = styled.div`
   margin: 0 auto;
   position: relative;
   z-index: 1;
+  padding: 0 1rem;
 `;
 
 const SectionTitle = styled(motion.h2)`
@@ -34,123 +35,143 @@ const SectionTitle = styled(motion.h2)`
   color: var(--text-dark);
   position: relative;
   display: inline-block;
-  
+  text-align: center;
+  width: 100%;
+
   &:after {
     content: '';
     position: absolute;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     bottom: -10px;
     width: 60px;
     height: 3px;
     background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
   }
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
 `;
 
 const EducationGrid = styled.div`
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 2rem;
-  max-width: 800px;
-  margin: 0 auto;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const EducationCard = styled(motion.div)`
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 15px;
-  padding: 2rem;
+  background: var(--background-card);
+  border-radius: 20px;
   box-shadow: var(--shadow);
   border: 1px solid var(--border-color);
-  position: relative;
   overflow: hidden;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 2rem;
-  align-items: start;
-  
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 100%;
-    background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
-  }
-  
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 1rem;
+  position: relative;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-4px);
   }
 `;
 
-const UniversityImage = styled.div`
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
+const CardBanner = styled.div`
+  height: 80px;
+  background: ${({ gradient }) => gradient};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  span {
+    font-size: 2rem;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 0.05em;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+`;
+
+const CardBody = styled.div`
+  padding: 1.5rem;
+  padding-top: 0.75rem;
+`;
+
+const LogoWrapper = styled.div`
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  
+  margin-top: -30px;
+  margin-left: 1.5rem;
+  margin-bottom: 0.75rem;
+  flex-shrink: 0;
+
   img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    padding: 4px;
   }
-  
-  @media (max-width: 768px) {
-    width: 100px;
-    height: 100px;
-    margin: 0 auto;
-  }
-`;
-
-const UniversityInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
 `;
 
 const UniversityName = styled.h3`
-  font-size: 1.5rem;
+  font-size: 1.3rem;
+  font-weight: 700;
   color: var(--text-dark);
-  margin: 0;
+  margin: 0 0 0.35rem 0;
 `;
 
-const UniversityLocation = styled.div`
+const LocationLine = styled.div`
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
   color: var(--text-medium);
-  font-size: 0.9rem;
-  
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+
   svg {
     color: var(--primary-color);
+    flex-shrink: 0;
   }
 `;
 
-const UniversityDegree = styled.h4`
-  font-size: 1.2rem;
+const DegreeLine = styled.p`
+  font-size: 0.95rem;
+  font-weight: 500;
   color: var(--text-dark);
-  margin: 0.5rem 0;
+  margin: 0.5rem 0 0.75rem 0;
+  line-height: 1.5;
 `;
 
-const UniversityGrade = styled.div`
-  display: flex;
+const GradeBadge = styled.div`
+  display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
+  background: rgba(225, 29, 72, 0.1);
   color: var(--primary-color);
-  font-size: 1rem;
-  font-weight: 500;
-  margin: 0.5rem 0;
-  
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.3rem 0.85rem;
+  border-radius: 50px;
+  margin-bottom: 0.75rem;
+
   svg {
     color: var(--primary-color);
+    font-size: 0.8rem;
   }
 `;
 
 const UniversityDescription = styled.p`
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 0.9rem;
+  line-height: 1.7;
   color: var(--text-medium);
+  margin: 0;
 `;
 
 const Education = () => {
@@ -158,7 +179,7 @@ const Education = () => {
     triggerOnce: true,
     threshold: 0.1
   });
-  
+
   return (
     <EducationSection id="education" ref={ref}>
       <Container>
@@ -168,56 +189,62 @@ const Education = () => {
         >
           Education
         </SectionTitle>
-        
+
         <EducationGrid>
           <EducationCard
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.2 }}
           >
-            <UniversityImage>
-              <img src="/images/uwin1.png" alt="University of Windsor" />
-            </UniversityImage>
-            <UniversityInfo>
+            <CardBanner gradient="linear-gradient(135deg, #e11d48, #0ea5e9)">
+              <span>UWindsor</span>
+            </CardBanner>
+            <CardBody>
+              <LogoWrapper>
+                <img src="/images/uwin1.png" alt="University of Windsor" />
+              </LogoWrapper>
               <UniversityName>University of Windsor</UniversityName>
-              <UniversityLocation>
+              <LocationLine>
                 <FaMapMarkerAlt />
                 <span>Ontario, Canada</span>
-              </UniversityLocation>
-              <UniversityDegree>Master of Applied Computing, Minor in Business Administration</UniversityDegree>
-              <UniversityGrade>
+              </LocationLine>
+              <DegreeLine>Master of Applied Computing, Minor in Business Administration</DegreeLine>
+              <GradeBadge>
                 <FaStar />
-                <span>Grade: 88%</span>
-              </UniversityGrade>
+                Grade: 88%
+              </GradeBadge>
               <UniversityDescription>
-                Enhanced my expertise in AI, data analytics, cloud computing, and cybersecurity. Combined with a minor in Business Administration, this program has equipped me with the ability to integrate technical innovation with business strategy. With hands-on experience in MongoDB, Apache Spark, Azure, and machine learning, I am well-prepared to develop AI-driven, data-centric solutions that enhance efficiency and drive business growth—an invaluable asset for solving complex industry challenges.
+                Enhanced my expertise in AI, data analytics, cloud computing, and cybersecurity. Combined with a minor in Business Administration, this program equipped me to integrate technical innovation with business strategy — with hands-on work in MongoDB, Apache Spark, Azure, and machine learning.
               </UniversityDescription>
-            </UniversityInfo>
+            </CardBody>
           </EducationCard>
-          
+
           <EducationCard
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.3 }}
+            transition={{ delay: 0.35 }}
           >
-            <UniversityImage>
-              <img src="/images/GLA_University_logo.png" alt="GLA University" />
-            </UniversityImage>
-            <UniversityInfo>
+            <CardBanner gradient="linear-gradient(135deg, #ff6b6b, #f59e0b)">
+              <span>GLA</span>
+            </CardBanner>
+            <CardBody>
+              <LogoWrapper>
+                <img src="/images/GLA_University_logo.png" alt="GLA University" />
+              </LogoWrapper>
               <UniversityName>GLA University</UniversityName>
-              <UniversityLocation>
+              <LocationLine>
                 <FaMapMarkerAlt />
                 <span>India</span>
-              </UniversityLocation>
-              <UniversityDegree>Bachelor of Technology in Computer Science and Engineering</UniversityDegree>
-              <UniversityGrade>
+              </LocationLine>
+              <DegreeLine>Bachelor of Technology in Computer Science and Engineering</DegreeLine>
+              <GradeBadge>
                 <FaStar />
-                <span>Grade: 80%</span>
-              </UniversityGrade>
+                Grade: 80%
+              </GradeBadge>
               <UniversityDescription>
-                I built a strong foundation in software development, data structures, and algorithms. As the VP of the Technology Club, I honed my leadership and problem-solving skills while working on innovative projects. My coursework and hands-on experience helped me develop expertise in programming, database management, and system optimization, laying the groundwork for my career in software engineering and data-driven solutions.
+                Built a strong foundation in software development, data structures, and algorithms. As VP of the Technology Club, I honed leadership and problem-solving skills while working on innovative projects — developing expertise in programming, database management, and system optimization.
               </UniversityDescription>
-            </UniversityInfo>
+            </CardBody>
           </EducationCard>
         </EducationGrid>
       </Container>
@@ -225,4 +252,4 @@ const Education = () => {
   );
 };
 
-export default Education; 
+export default Education;

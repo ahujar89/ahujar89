@@ -2,28 +2,38 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { FaReact, FaNodeJs, FaPython, FaDatabase, FaCloud, FaRProject, FaProjectDiagram, FaUsers, FaChartLine, FaTasks, FaRoute } from 'react-icons/fa';
-import { SiJavascript, SiTypescript, SiNextdotjs, SiTailwindcss, SiMicrosoftazure, SiDocker, SiPowerbi, SiApachespark, SiGithubactions, SiDjango } from 'react-icons/si';
+import {
+  FaReact, FaNodeJs, FaPython, FaDatabase, FaCloud,
+  FaRProject, FaProjectDiagram, FaUsers, FaChartLine,
+  FaTasks, FaRoute
+} from 'react-icons/fa';
+import {
+  SiJavascript, SiTypescript, SiNextdotjs, SiTailwindcss,
+  SiMicrosoftazure, SiDocker, SiPowerbi, SiApachespark,
+  SiGithubactions, SiDjango
+} from 'react-icons/si';
 import { DiMysql } from 'react-icons/di';
 
+/* ─── Section ─────────────────────────────────────────────────────────── */
+
 const SkillsSection = styled.section`
-  padding: 10rem 2rem;
-  background-color: var(--background-light-accent);
+  padding: 8rem 2rem;
+  background-color: var(--background-light);
   position: relative;
   overflow: hidden;
-  
+
   @media (max-width: 768px) {
     padding: 6rem 1rem;
   }
 `;
 
 const Container = styled.div`
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
   position: relative;
   z-index: 1;
   padding: 0 1rem;
-  
+
   @media (max-width: 768px) {
     padding: 0 0.5rem;
   }
@@ -31,7 +41,7 @@ const Container = styled.div`
 
 const SectionHeader = styled.div`
   text-align: center;
-  margin-bottom: 5rem;
+  margin-bottom: 4rem;
 `;
 
 const SectionTitle = styled(motion.h2)`
@@ -40,11 +50,11 @@ const SectionTitle = styled(motion.h2)`
   position: relative;
   display: inline-block;
   color: var(--text-dark);
-  
+
   @media (max-width: 768px) {
     font-size: 2rem;
   }
-  
+
   &:after {
     content: '';
     position: absolute;
@@ -58,225 +68,201 @@ const SectionTitle = styled(motion.h2)`
 `;
 
 const SectionSubtitle = styled(motion.p)`
-  font-size: 1.2rem;
-  color: var(--text-dark);
-  max-width: 600px;
-  margin: 0 auto;
-  margin-top: 1.5rem;
-  
+  font-size: 1.05rem;
+  color: var(--text-medium);
+  max-width: 620px;
+  margin: 1.5rem auto 0;
+  line-height: 1.7;
+
   @media (max-width: 768px) {
-    font-size: 1rem;
+    font-size: 0.95rem;
     padding: 0 1rem;
-    margin-top: 1rem;
   }
 `;
 
-const SkillsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 6rem;
-  padding: 2rem 0;
-  
-  @media (max-width: 768px) {
-    gap: 3rem;
-    padding: 1rem 0;
+/* ─── Bento Grid ─────────────────────────────────────────────────────── */
+
+const BentoGrid = styled(motion.div)`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
   }
 `;
 
-const SkillsRow = styled(motion.div)`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 3rem;
-  justify-content: center;
-  padding: 0 1rem;
-  
-  @media (max-width: 768px) {
-    gap: 2rem;
-    padding: 0 0.5rem;
-  }
-`;
-
-const SkillCategory = styled(motion.div)`
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 15px;
-  padding: 3rem;
-  backdrop-filter: blur(5px);
-  border: none;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
+const CategoryCard = styled(motion.div)`
+  background: var(--background-card);
+  border-radius: 18px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+  padding: 1.75rem;
   position: relative;
   overflow: hidden;
-  flex: 1;
-  min-width: 320px;
-  max-width: 420px;
-  
-  @media (max-width: 768px) {
-    min-width: 100%;
-    padding: 1.5rem;
-    margin: 0 0.5rem;
-  }
-`;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  grid-column: ${({ featured }) => (featured ? 'span 2' : 'span 1')};
 
-const CategoryTitle = styled.h3`
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  color: var(--primary-color);
-  
-  @media (max-width: 768px) {
-    font-size: 1.3rem;
-    margin-bottom: 1.5rem;
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    background: ${({ accent }) => accent};
+    border-radius: 18px 0 0 18px;
   }
-`;
 
-const CategoryIcon = styled.div`
-  font-size: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--primary-color);
-`;
-
-const SkillsList = styled.ul`
-  list-style: none;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 2rem;
-  
-  @media (max-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-  }
-`;
-
-const SkillItem = styled(motion.li)`
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  font-size: 1.1rem;
-  color: var(--text-dark);
-  padding: 1rem;
-  background: rgba(240, 240, 245, 0.8);
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  
-  @media (max-width: 768px) {
-    font-size: 0.9rem;
-    padding: 0.8rem;
-    gap: 0.5rem;
-  }
-  
   &:hover {
-    background: rgba(78, 123, 255, 0.1);
-    color: var(--primary-color);
-    transform: translateX(5px);
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-3px);
+  }
+
+  @media (max-width: 900px) {
+    grid-column: span 1;
   }
 `;
 
-const SkillIcon = styled.div`
-  font-size: 1.3rem;
-  color: var(--secondary-color);
+const CardHeader = styled.div`
   display: flex;
   align-items: center;
-  
-  @media (max-width: 768px) {
-    font-size: 1.1rem;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+`;
+
+const CardIcon = styled.div`
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  color: ${({ accent }) => accent};
+`;
+
+const CardTitle = styled.h3`
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0;
+`;
+
+const ChipsWrap = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+`;
+
+const Chip = styled.div`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 50px;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  background: ${({ accent }) => `${accent}18`};
+  color: ${({ accent }) => accent};
+  border: 1px solid ${({ accent }) => `${accent}33`};
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: default;
+
+  svg {
+    font-size: 0.875rem;
+    flex-shrink: 0;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px ${({ accent }) => `${accent}28`};
   }
 `;
 
-const SkillName = styled.span`
-  flex: 1;
-  font-weight: 500;
-  word-break: break-word;
-`;
+/* ─── Animation variants ─────────────────────────────────────────────── */
 
-const container = {
+const containerVariants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.1
-    }
+    transition: { staggerChildren: 0.1 }
   }
 };
 
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+const cardVariants = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.45 } }
 };
 
+/* ─── Component ─────────────────────────────────────────────────────── */
+
 const Skills = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1
-  });
-  
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+
   const skillCategories = [
-    {
-      title: 'Product & Project Mgmt',
-      icon: <FaProjectDiagram />,
-      skills: [
-        { name: 'Roadmap Planning', icon: <FaRoute /> },
-        { name: 'Stakeholder Management', icon: <FaUsers /> },
-        { name: 'Data-Driven Decision Making', icon: <FaChartLine /> },
-        { name: 'Agile Project Execution', icon: <FaTasks /> }
-      ]
-    },
     {
       title: 'Data Analytics',
       icon: <FaDatabase />,
+      accent: '#f59e0b',
       skills: [
-        { name: 'SQL', icon: <DiMysql /> },
-        { name: 'R', icon: <FaRProject /> },
-        { name: 'Power BI', icon: <SiPowerbi /> },
-        { name: 'PySpark', icon: <SiApachespark /> },
-        { name: 'ETL Pipelines', icon: <FaDatabase /> }
+        { name: 'SQL',          icon: <DiMysql /> },
+        { name: 'R',            icon: <FaRProject /> },
+        { name: 'Power BI',     icon: <SiPowerbi /> },
+        { name: 'PySpark',      icon: <SiApachespark /> },
+        { name: 'ETL Pipelines',icon: <FaDatabase /> }
       ]
     },
     {
       title: 'Frontend',
       icon: <FaReact />,
+      accent: '#e11d48',
       skills: [
-        { name: 'React', icon: <FaReact /> },
-        { name: 'JavaScript', icon: <SiJavascript /> },
-        { name: 'TypeScript', icon: <SiTypescript /> },
-        { name: 'Next.js', icon: <SiNextdotjs /> },
+        { name: 'React',        icon: <FaReact /> },
+        { name: 'JavaScript',   icon: <SiJavascript /> },
+        { name: 'TypeScript',   icon: <SiTypescript /> },
+        { name: 'Next.js',      icon: <SiNextdotjs /> },
         { name: 'Tailwind CSS', icon: <SiTailwindcss /> }
       ]
     },
     {
       title: 'Backend',
       icon: <FaNodeJs />,
+      accent: '#8b5cf6',
       skills: [
-        { name: 'Node.js', icon: <FaNodeJs /> },
-        { name: 'Python', icon: <FaPython /> },
+        { name: 'Node.js',      icon: <FaNodeJs /> },
+        { name: 'Python',       icon: <FaPython /> },
         { name: 'RESTful APIs', icon: <FaDatabase /> },
-        { name: 'Django', icon: <SiDjango /> },
-        { name: 'MongoDB', icon: <FaDatabase /> }
+        { name: 'Django',       icon: <SiDjango /> },
+        { name: 'MongoDB',      icon: <FaDatabase /> }
       ]
     },
     {
       title: 'DevOps & Cloud',
       icon: <FaCloud />,
+      accent: '#0ea5e9',
+      featured: true,
       skills: [
-        { name: 'Azure', icon: <SiMicrosoftazure /> },
-        { name: 'Docker', icon: <SiDocker /> },
-        { name: 'CI/CD', icon: <FaCloud /> },
+        { name: 'Azure',          icon: <SiMicrosoftazure /> },
+        { name: 'Docker',         icon: <SiDocker /> },
+        { name: 'CI/CD',          icon: <FaCloud /> },
         { name: 'GitHub Actions', icon: <SiGithubactions /> },
-        { name: 'Linux', icon: <FaCloud /> }
+        { name: 'Linux',          icon: <FaCloud /> }
       ]
     },
+    {
+      title: 'PM Skills',
+      icon: <FaProjectDiagram />,
+      accent: '#ff6b6b',
+      skills: [
+        { name: 'Roadmap Planning',        icon: <FaRoute /> },
+        { name: 'Stakeholder Management',  icon: <FaUsers /> },
+        { name: 'Data-Driven Decisions',   icon: <FaChartLine /> },
+        { name: 'Agile Execution',         icon: <FaTasks /> }
+      ]
+    }
   ];
-  
-  // Group categories into rows of 2-3
-  const rows = [];
-  for (let i = 0; i < skillCategories.length; i += 3) {
-    rows.push(skillCategories.slice(i, i + 3));
-  }
-  
+
   return (
     <SkillsSection id="skills" ref={ref}>
       <Container>
@@ -292,45 +278,40 @@ const Skills = () => {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.1 }}
           >
-            My expertise lies in data analytics and frontend development,
-             where I design intuitive, data-driven interfaces and extract actionable insights to build scalable, high-performance applications.
+            I build data-intensive applications end-to-end — from clean user interfaces to cloud pipelines and AI integrations.
           </SectionSubtitle>
         </SectionHeader>
-        
-        <SkillsContainer
-          variants={container}
+
+        <BentoGrid
+          variants={containerVariants}
           initial="hidden"
-          animate={inView ? "show" : "hidden"}
+          animate={inView ? 'show' : 'hidden'}
         >
-          {rows.map((row, rowIndex) => (
-            <SkillsRow key={rowIndex}>
-              {row.map((category, categoryIndex) => (
-                <SkillCategory key={categoryIndex} variants={item}>
-                  <CategoryTitle>
-                    <CategoryIcon>{category.icon}</CategoryIcon>
-                    {category.title}
-                  </CategoryTitle>
-                  <SkillsList>
-                    {category.skills.map((skill, skillIndex) => (
-                      <SkillItem 
-                        key={skillIndex}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={inView ? { opacity: 1, x: 0 } : {}}
-                        transition={{ delay: 0.2 + skillIndex * 0.1 }}
-                      >
-                        <SkillIcon>{skill.icon}</SkillIcon>
-                        <SkillName>{skill.name}</SkillName>
-                      </SkillItem>
-                    ))}
-                  </SkillsList>
-                </SkillCategory>
-              ))}
-            </SkillsRow>
+          {skillCategories.map((category, idx) => (
+            <CategoryCard
+              key={idx}
+              variants={cardVariants}
+              accent={category.accent}
+              featured={category.featured ? 1 : 0}
+            >
+              <CardHeader>
+                <CardIcon accent={category.accent}>{category.icon}</CardIcon>
+                <CardTitle>{category.title}</CardTitle>
+              </CardHeader>
+              <ChipsWrap>
+                {category.skills.map((skill, sIdx) => (
+                  <Chip key={sIdx} accent={category.accent}>
+                    {skill.icon}
+                    {skill.name}
+                  </Chip>
+                ))}
+              </ChipsWrap>
+            </CategoryCard>
           ))}
-        </SkillsContainer>
+        </BentoGrid>
       </Container>
     </SkillsSection>
   );
 };
 
-export default Skills; 
+export default Skills;

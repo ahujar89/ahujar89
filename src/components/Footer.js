@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { FaHeart, FaArrowUp } from 'react-icons/fa';
+import { FaArrowUp } from 'react-icons/fa';
 
 const FooterContainer = styled.footer`
   padding: 3rem 2rem;
@@ -105,7 +105,7 @@ const Footer = () => {
         <FooterLeft>
         <FooterLogo src="/images/rishabh.jpg" alt="Logo" />
           <Copyright>
-            © {currentYear} Rishabh Ahuja. All rights reserved. Crafted with <Heart><FaHeart /></Heart> in React.
+            If you've scrolled this far, we should probably talk. → <a href="mailto:ahujar96@gmail.com" style={{color: 'var(--primary-color)'}}>ahujar96@gmail.com</a>
           </Copyright>
         </FooterLeft>
         

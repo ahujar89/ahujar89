@@ -7,17 +7,6 @@ const CertificationsSection = styled.section`
   padding: 8rem 2rem;
   background-color: var(--background-light-accent);
   position: relative;
-  
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(78, 123, 255, 0.05), transparent);
-    z-index: 0;
-  }
 `;
 
 const Container = styled.div`
@@ -30,7 +19,7 @@ const Container = styled.div`
 
 const SectionHeader = styled.div`
   text-align: center;
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
 `;
 
 const SectionTitle = styled(motion.h2)`
@@ -39,7 +28,7 @@ const SectionTitle = styled(motion.h2)`
   position: relative;
   display: inline-block;
   color: var(--text-dark);
-  
+
   &:after {
     content: '';
     position: absolute;
@@ -52,113 +41,91 @@ const SectionTitle = styled(motion.h2)`
   }
 `;
 
-const CertificationsGrid = styled.div`
+const SectionSubtitle = styled(motion.p)`
+  font-size: 1rem;
+  color: var(--text-medium);
+  margin-top: 1.5rem;
+`;
+
+const CertGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 4rem 6rem;
-  padding: 3rem;
-  max-width: 1400px;
-  margin: 0 auto;
-  
-  @media (max-width: 1200px) {
-    gap: 3rem 4rem;
-    padding: 2rem;
-  }
-  
-  @media (max-width: 968px) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 3rem;
-  }
-  
-  @media (max-width: 480px) {
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+
+  @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
   }
 `;
 
-const CertificationCard = styled(motion.a)`
+const CertCard = styled(motion.a)`
   display: flex;
-  flex-direction: column;
   align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 1.25rem;
+  background: white;
+  border-radius: 14px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
   text-decoration: none;
-  transition: transform 0.3s ease;
-  
-  &:hover {
-    transform: translateY(-10px);
-  }
-`;
-
-const LogoContainer = styled.div`
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  overflow: visible;
-  margin-bottom: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
   position: relative;
-  
+  overflow: hidden;
+
   &:before {
     content: '';
     position: absolute;
-    top: -3px;
-    left: -3px;
-    right: -3px;
-    bottom: -3px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    z-index: -1;
-  }
-  
-  &:after {
-    content: '';
-    position: absolute;
-    top: 0;
     left: 0;
-    right: 0;
+    top: 0;
     bottom: 0;
-    border-radius: 50%;
-    background: var(--background-light-accent);
-    z-index: -1;
+    width: 4px;
+    background: var(--gradient-primary);
+    border-radius: 14px 0 0 14px;
   }
-  
-  img {
-    width: 85%;
-    height: 85%;
-    object-fit: contain;
-    border-radius: 50%;
-    transition: transform 0.3s ease;
-    z-index: 1;
-  }
-  
-  ${CertificationCard}:hover & {
-    transform: translateY(-5px);
-    
-    &:before {
-      filter: brightness(1.1);
-    }
-    
-    img {
-      transform: scale(1.05);
-    }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary-light);
   }
 `;
 
-const CertificationName = styled.h3`
-  font-size: 1.1rem;
-  color: var(--text-dark);
-  text-align: center;
-  margin: 0;
-  font-weight: 500;
-  transition: color 0.3s ease;
-  max-width: 220px;
-  line-height: 1.4;
-  
-  ${CertificationCard}:hover & {
-    color: var(--primary-color);
+const CertLogo = styled.div`
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--background-light);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 4px;
   }
+`;
+
+const CertInfo = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+`;
+
+const CertName = styled.span`
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  line-height: 1.3;
+`;
+
+const CertVerify = styled.span`
+  font-size: 0.75rem;
+  color: var(--primary-color);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
 `;
 
 const Certifications = () => {
@@ -211,26 +178,36 @@ const Certifications = () => {
           >
             Certifications
           </SectionTitle>
+          <SectionSubtitle
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            Verified credentials in cloud, data, and development
+          </SectionSubtitle>
         </SectionHeader>
-        
-        <CertificationsGrid>
+
+        <CertGrid>
           {certifications.map((cert, index) => (
-            <CertificationCard
+            <CertCard
               key={index}
               href={cert.link}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: index * 0.1 }}
             >
-              <LogoContainer>
+              <CertLogo>
                 <img src={cert.logo} alt={cert.name} />
-              </LogoContainer>
-              <CertificationName>{cert.name}</CertificationName>
-            </CertificationCard>
+              </CertLogo>
+              <CertInfo>
+                <CertName>{cert.name}</CertName>
+                <CertVerify>View credential &rarr;</CertVerify>
+              </CertInfo>
+            </CertCard>
           ))}
-        </CertificationsGrid>
+        </CertGrid>
       </Container>
     </CertificationsSection>
   );

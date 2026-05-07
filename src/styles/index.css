@@ -1,28 +1,28 @@
 :root {
-  /* Dark Mode — Electric Violet & Cyan */
-  --primary-color: #a259ff;
-  --primary-dark: #7c3aed;
-  --primary-light: #c4b5fd;
-  --secondary-color: #00f5d4;
-  --accent-color: #ff6b9d;
+  /* Bloom — Rose & Sky */
+  --primary-color: #e11d48;
+  --primary-dark: #be123c;
+  --primary-light: #fb7185;
+  --secondary-color: #0ea5e9;
+  --accent-color: #f59e0b;
 
-  /* Backgrounds */
-  --background-light: #0d0d12;
-  --background-light-accent: #111118;
-  --background-dark: #080810;
-  --background-card: #16161f;
-  --card-bg: #16161f;
+  /* Backgrounds — barely-there rose blush */
+  --background-light: #fff9fb;
+  --background-light-accent: #fef0f3;
+  --background-dark: #fce7ef;
+  --background-card: #ffffff;
+  --card-bg: #ffffff;
 
-  /* Text (inverted for dark mode) */
-  --text-dark: #eaeaea;
-  --text-medium: #9090aa;
-  --text-light: #555570;
+  /* Text */
+  --text-dark: #1a0812;
+  --text-medium: #7d3a4f;
+  --text-light: #b0728a;
 
   /* UI */
   --transition-speed: 0.3s;
-  --shadow: 0 4px 24px rgba(162, 89, 255, 0.15);
-  --shadow-hover: 0 16px 48px rgba(162, 89, 255, 0.3);
-  --border-color: rgba(162, 89, 255, 0.18);
+  --shadow: 0 2px 8px rgba(225, 29, 72, 0.07), 0 8px 28px rgba(0, 0, 0, 0.06);
+  --shadow-hover: 0 8px 32px rgba(225, 29, 72, 0.16), 0 2px 8px rgba(0, 0, 0, 0.06);
+  --border-color: rgba(225, 29, 72, 0.12);
   --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
 }
 

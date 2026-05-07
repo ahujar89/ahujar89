@@ -24,8 +24,8 @@ const Section = styled.section`
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse 50% 40% at 95% 5%,  rgba(162, 89, 255, 0.08), transparent),
-      radial-gradient(ellipse 35% 30% at 5%  95%, rgba(0, 245, 212, 0.06), transparent);
+      radial-gradient(ellipse 50% 40% at 95% 5%,  rgba(225, 29, 72, 0.08), transparent),
+      radial-gradient(ellipse 35% 30% at 5%  95%, rgba(14, 165, 233, 0.06), transparent);
     z-index: 0;
   }
 `;
@@ -95,7 +95,7 @@ const TabList = styled.div`
   display: flex;
   flex-direction: column;
   padding: 1rem 0;
-  background: rgba(162, 89, 255, 0.03);
+  background: rgba(225, 29, 72, 0.03);
 
   @media (max-width: 700px) {
     flex-direction: row;
@@ -118,10 +118,10 @@ const Tab = styled.button`
   position: relative;
   transition: background 0.2s ease;
   border-left: 3px solid ${props => props.active ? 'var(--primary-color)' : 'transparent'};
-  background: ${props => props.active ? 'rgba(162, 89, 255, 0.08)' : 'transparent'};
+  background: ${props => props.active ? 'rgba(225, 29, 72, 0.08)' : 'transparent'};
 
   &:hover {
-    background: rgba(162, 89, 255, 0.05);
+    background: rgba(225, 29, 72, 0.05);
   }
 
   @media (max-width: 700px) {
@@ -226,7 +226,7 @@ const DurationBadge = styled.span`
   font-size: 0.75rem;
   color: var(--text-medium);
   padding: 0.25rem 0.75rem;
-  background: rgba(162, 89, 255, 0.1);
+  background: rgba(225, 29, 72, 0.1);
   border-radius: 20px;
   font-weight: 500;
 `;
@@ -235,10 +235,10 @@ const FreelanceBadge = styled.span`
   font-size: 0.72rem;
   color: var(--secondary-color);
   padding: 0.25rem 0.7rem;
-  background: rgba(0, 245, 212, 0.1);
+  background: rgba(14, 165, 233, 0.1);
   border-radius: 20px;
   font-weight: 700;
-  border: 1px solid rgba(0, 245, 212, 0.2);
+  border: 1px solid rgba(14, 165, 233, 0.2);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 `;
@@ -262,7 +262,7 @@ const CornerAccent = styled.div`
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(162, 89, 255, 0.08), transparent);
+  background: radial-gradient(circle, rgba(225, 29, 72, 0.08), transparent);
   pointer-events: none;
 `;
 

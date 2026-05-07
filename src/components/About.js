@@ -121,21 +121,15 @@ const About = () => {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.1 }}
             >
-                I'm a driven and curious software developer with a passion for creating seamless digital experiences and uncovering insights through data. With a background in frontend development and growing expertise in data analytics and engineering, I strive to bridge the gap between intuitive design and intelligent, data-driven systems.
+              Hi, I'm Rishabh! I love building things — the kind that solve real problems and feel genuinely satisfying to use. I care deeply about the craft, whether that's making a product feel effortless or untangling a messy system into something clean and elegant.
             </AboutParagraph>
             <AboutParagraph
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.2 }}
             >
-                My journey started with a fascination for how the web works, which evolved into a deeper interest in technologies like React.js, Node.js, and cloud platforms. I enjoy designing responsive interfaces and working with data pipelines that turn complex information into meaningful outcomes — always with a focus on real-world impact.
+              What really drives me is curiosity. I get genuinely excited about understanding <em>how</em> and <em>why</em> things work, not just making them work. Right now I'm particularly drawn to AI products and the challenge of making powerful technology feel approachable. If you're working on something ambitious and interesting, let's talk.
             </AboutParagraph>
-            <AboutParagraph
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.3 }}
-            >
-                Beyond the screen, I draw inspiration from everyday moments — observing how people engage with technology, chasing ideas that fuel curiosity, and bringing a thoughtful, creative approach to every project. I bring a unique mix of perspective, passion, and persistence — and I'm here to build what matters.                </AboutParagraph>
             
           </AboutText>
           <AboutImage
@@ -143,7 +137,7 @@ const About = () => {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8 }}
           >
-            <img src="/images/profile.jpeg" alt="Rishabh Ahuja" />
+            <img src="/images/profile.png" alt="Rishabh Ahuja" />
           </AboutImage>
         </AboutContent>
       </Container>

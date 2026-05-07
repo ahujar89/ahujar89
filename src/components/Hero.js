@@ -27,8 +27,8 @@ const HeroSection = styled.section`
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse 60% 50% at 70% 40%, rgba(162, 89, 255, 0.12), transparent),
-      radial-gradient(ellipse 40% 40% at 10% 70%, rgba(0, 245, 212, 0.07), transparent);
+      radial-gradient(ellipse 60% 50% at 70% 40%, rgba(225, 29, 72, 0.10), transparent),
+      radial-gradient(ellipse 40% 40% at 10% 70%, rgba(14, 165, 233, 0.07), transparent);
     z-index: 0;
   }
 `;
@@ -73,7 +73,7 @@ const Name = styled(motion.h1)`
   font-weight: 800;
   margin-bottom: 1rem;
   line-height: 1.05;
-  background: linear-gradient(135deg, #eaeaea 30%, var(--primary-color) 70%, var(--secondary-color) 100%);
+  background: linear-gradient(135deg, var(--text-dark) 20%, var(--primary-color) 65%, var(--secondary-color) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -153,13 +153,13 @@ const PrimaryBtn = styled.a`
   font-weight: 600;
   cursor: pointer;
   text-decoration: none;
-  box-shadow: 0 0 20px rgba(162, 89, 255, 0.4);
+  box-shadow: 0 0 20px rgba(225, 29, 72, 0.4);
   transition: box-shadow 0.3s ease, background 0.3s ease;
 
   &:hover {
     color: white;
     background: var(--primary-dark);
-    box-shadow: 0 0 35px rgba(162, 89, 255, 0.65);
+    box-shadow: 0 0 35px rgba(225, 29, 72, 0.65);
   }
 `;
 
@@ -181,7 +181,7 @@ const OutlineBtn = styled.a`
   &:hover {
     border-color: var(--primary-color);
     color: var(--primary-color);
-    box-shadow: 0 0 16px rgba(162, 89, 255, 0.2);
+    box-shadow: 0 0 16px rgba(225, 29, 72, 0.2);
   }
 `;
 
@@ -212,7 +212,7 @@ const SocialLink = styled.a`
     color: white;
     transform: translateY(-3px);
     border-color: transparent;
-    box-shadow: 0 6px 20px rgba(162, 89, 255, 0.4);
+    box-shadow: 0 6px 20px rgba(225, 29, 72, 0.4);
   }
 `;
 
@@ -232,196 +232,152 @@ const IllustrationWrap = styled(motion.div)`
   }
 `;
 
-/* ─── AI Explorer SVG — animations via inline <style> ─────────────────── */
+/* ─── Aurora Sphere SVG — animations via inline <style> ──────────────── */
 
-const AIIllustration = () => (
-  <svg viewBox="0 0 480 440" fill="none" xmlns="http://www.w3.org/2000/svg">
+const AuroraSphere = () => (
+  <svg viewBox="0 0 520 480" fill="none" xmlns="http://www.w3.org/2000/svg">
     <style>{`
-      @keyframes floatA {
-        0%, 100% { transform: translateY(0px); }
-        50%       { transform: translateY(-12px); }
+      @keyframes floatA { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+      @keyframes floatB { 0%,100% { transform: translateY(-8px); } 50% { transform: translateY(8px); } }
+      @keyframes floatC { 0%,100% { transform: translateY(4px); } 50% { transform: translateY(-10px); } }
+      @keyframes orbPulse {
+        0%,100% { filter: drop-shadow(0 0 10px rgba(225,29,72,0.4)); }
+        50% { filter: drop-shadow(0 0 28px rgba(225,29,72,0.65)) drop-shadow(0 0 14px rgba(14,165,233,0.35)); }
       }
-      @keyframes floatB {
-        0%, 100% { transform: translateY(-8px); }
-        50%       { transform: translateY(6px); }
-      }
-      @keyframes floatC {
-        0%, 100% { transform: translateY(4px); }
-        50%       { transform: translateY(-10px); }
-      }
-      @keyframes pulseDot {
-        0%, 100% { opacity: 0.7; }
-        50%       { opacity: 1; }
-      }
-      @keyframes dashMove {
-        to { stroke-dashoffset: -40; }
-      }
-      @keyframes screenFlicker {
-        0%, 88%, 100% { opacity: 1; }
-        93%           { opacity: 0.45; }
-      }
-      @keyframes glowPulse {
-        0%, 100% { filter: drop-shadow(0 0 5px #a259ff); }
-        50%       { filter: drop-shadow(0 0 14px #a259ff) drop-shadow(0 0 5px #00f5d4); }
-      }
-      @keyframes cursorBlink {
-        0%, 100% { opacity: 1; }
-        50%       { opacity: 0; }
-      }
-      .float-a  { animation: floatA  4s   ease-in-out infinite; }
-      .float-b  { animation: floatB  5s   ease-in-out infinite; }
-      .float-c  { animation: floatC  3.5s ease-in-out infinite; }
-      .glow     { animation: glowPulse 3s ease-in-out infinite; }
-      .screen   { animation: screenFlicker 8s ease-in-out infinite; }
-      .dash     { stroke-dasharray: 6 4; animation: dashMove 1.6s linear infinite; }
-      .pulse    { animation: pulseDot 2s ease-in-out infinite; }
-      .cursor-b { animation: cursorBlink 1s step-end infinite; }
+      @keyframes sparkPulse { 0%,100% { opacity: 0.25; } 50% { opacity: 0.85; } }
+      .float-a  { animation: floatA 4s ease-in-out infinite; }
+      .float-b  { animation: floatB 5.2s ease-in-out infinite; }
+      .float-c  { animation: floatC 3.8s ease-in-out infinite; }
+      .float-a2 { animation: floatA 4s ease-in-out infinite; animation-delay: -1.6s; }
+      .float-b2 { animation: floatB 5.2s ease-in-out infinite; animation-delay: -2.2s; }
+      .orb-pulse { animation: orbPulse 3.5s ease-in-out infinite; }
+      .sp1 { animation: sparkPulse 2.2s ease-in-out infinite; }
+      .sp2 { animation: sparkPulse 2.2s ease-in-out infinite; animation-delay: -0.7s; }
+      .sp3 { animation: sparkPulse 2.2s ease-in-out infinite; animation-delay: -1.4s; }
     `}</style>
 
     <defs>
-      <radialGradient id="bgGlow" cx="50%" cy="55%" r="45%">
-        <stop offset="0%" stopColor="#a259ff" stopOpacity="0.18" />
-        <stop offset="100%" stopColor="#a259ff" stopOpacity="0" />
+      {/* Aurora planet gradient */}
+      <radialGradient id="auroraGrad" cx="38%" cy="32%" r="72%">
+        <stop offset="0%"   stopColor="#fde68a" />
+        <stop offset="22%"  stopColor="#f43f5e" />
+        <stop offset="50%"  stopColor="#a855f7" />
+        <stop offset="78%"  stopColor="#0ea5e9" />
+        <stop offset="100%" stopColor="#1d4ed8" />
       </radialGradient>
-      <radialGradient id="screenGlow" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stopColor="#a259ff" stopOpacity="0.25" />
-        <stop offset="100%" stopColor="#a259ff" stopOpacity="0" />
+
+      {/* Ambient glow */}
+      <radialGradient id="ambientGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%"   stopColor="rgba(225,29,72,0.12)" />
+        <stop offset="100%" stopColor="rgba(225,29,72,0)" />
       </radialGradient>
-      <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#a259ff" />
-        <stop offset="100%" stopColor="#00f5d4" />
-      </linearGradient>
-      <filter id="glow">
-        <feGaussianBlur stdDeviation="2.5" result="blur" />
+
+      {/* Mini rose sphere gradient */}
+      <radialGradient id="miniRoseGrad" cx="35%" cy="30%" r="70%">
+        <stop offset="0%"   stopColor="#fde68a" />
+        <stop offset="60%"  stopColor="#e11d48" />
+        <stop offset="100%" stopColor="#be123c" />
+      </radialGradient>
+
+      {/* Mini sky sphere gradient */}
+      <radialGradient id="miniSkyGrad" cx="35%" cy="30%" r="70%">
+        <stop offset="0%"   stopColor="#bae6fd" />
+        <stop offset="100%" stopColor="#0ea5e9" />
+      </radialGradient>
+
+      {/* Glow filter */}
+      <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+        <feGaussianBlur stdDeviation="3" result="blur" />
         <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
       </filter>
     </defs>
 
-    {/* Ambient glow */}
-    <ellipse cx="240" cy="240" rx="200" ry="180" fill="url(#bgGlow)" />
+    {/* A — Ambient background */}
+    <circle cx="260" cy="240" r="195" fill="url(#ambientGlow)" />
 
-    {/* ── Neural network — top, float group A ── */}
+    {/* B — Background decorative curves */}
+    <path d="M 30 90 Q 180 40 350 110" fill="none" stroke="rgba(225,29,72,0.06)" strokeWidth="2" />
+    <path d="M 450 400 Q 300 440 140 370" fill="none" stroke="rgba(14,165,233,0.06)" strokeWidth="2" />
+    <path d="M 480 160 Q 420 260 480 360" fill="none" stroke="rgba(245,158,11,0.05)" strokeWidth="1.5" />
+
+    {/* C — Three orbital ellipses */}
+    <ellipse cx="260" cy="240" rx="185" ry="58" transform="rotate(-8, 260, 240)" fill="none" stroke="rgba(225,29,72,0.2)"    strokeWidth="1.5" strokeDasharray="5 7" />
+    <ellipse cx="260" cy="240" rx="178" ry="54" transform="rotate(27, 260, 240)"  fill="none" stroke="rgba(14,165,233,0.15)"  strokeWidth="1.2" strokeDasharray="4 8" />
+    <ellipse cx="260" cy="240" rx="170" ry="50" transform="rotate(57, 260, 240)"  fill="none" stroke="rgba(245,158,11,0.13)"  strokeWidth="1"   strokeDasharray="3 9" />
+
+    {/* D — Satellite dots on orbital rings */}
+    {/* float-a group: rose dots */}
     <g className="float-a">
-      <line x1="75"  y1="55"  x2="155" y2="95"  stroke="#a259ff" strokeWidth="1" strokeOpacity="0.35" />
-      <line x1="155" y1="95"  x2="235" y2="55"  stroke="#00f5d4" strokeWidth="1" strokeOpacity="0.35" />
-      <line x1="235" y1="55"  x2="335" y2="80"  stroke="#a259ff" strokeWidth="1" strokeOpacity="0.35" />
-      <line x1="155" y1="95"  x2="195" y2="150" stroke="#a259ff" strokeWidth="1" strokeOpacity="0.3"  />
-      <line x1="235" y1="55"  x2="195" y2="150" stroke="#00f5d4" strokeWidth="1" strokeOpacity="0.3"  />
-      <line x1="335" y1="80"  x2="390" y2="130" stroke="#a259ff" strokeWidth="1" strokeOpacity="0.25" />
-
-      {/* Animated dash lines */}
-      <line className="dash" x1="155" y1="95"  x2="195" y2="150" stroke="#00f5d4" strokeWidth="1.5" strokeOpacity="0.55" />
-      <line className="dash" x1="235" y1="55"  x2="335" y2="80"  stroke="#a259ff" strokeWidth="1.5" strokeOpacity="0.55" />
-
-      {/* Nodes */}
-      <g className="glow">
-        <circle cx="75"  cy="55"  r="8"  fill="none" stroke="#a259ff" strokeWidth="1.5" />
-        <circle cx="75"  cy="55"  r="4"  fill="#a259ff" className="pulse" />
-      </g>
-      <circle cx="155" cy="95"  r="11" fill="none" stroke="#00f5d4" strokeWidth="1.5" filter="url(#glow)" />
-      <circle cx="155" cy="95"  r="5"  fill="#00f5d4" opacity="0.9" />
-      <circle cx="235" cy="55"  r="8"  fill="none" stroke="#a259ff" strokeWidth="1.5" />
-      <circle cx="235" cy="55"  r="4"  fill="#a259ff" className="pulse" />
-      <circle cx="335" cy="80"  r="11" fill="none" stroke="#00f5d4" strokeWidth="1.5" filter="url(#glow)" />
-      <circle cx="335" cy="80"  r="5"  fill="#00f5d4" opacity="0.8" />
-      <circle cx="195" cy="150" r="9"  fill="none" stroke="#a259ff" strokeWidth="1.5" />
-      <circle cx="195" cy="150" r="4"  fill="#a259ff" opacity="0.7" />
-      <circle cx="390" cy="130" r="7"  fill="none" stroke="#00f5d4" strokeWidth="1.5" />
-      <circle cx="390" cy="130" r="3"  fill="#00f5d4" opacity="0.6" />
+      <circle cx="445" cy="240" r="7" fill="#e11d48" opacity="0.7" />
+      <circle cx="75"  cy="240" r="5" fill="#e11d48" opacity="0.55" />
     </g>
-
-    {/* ── Floating bar chart — float group B ── */}
+    {/* float-b group: sky dots */}
     <g className="float-b">
-      <rect x="385" y="155" width="11" height="35" rx="3" fill="#a259ff" opacity="0.6" />
-      <rect x="400" y="138" width="11" height="52" rx="3" fill="#00f5d4" opacity="0.7" />
-      <rect x="415" y="147" width="11" height="43" rx="3" fill="#a259ff" opacity="0.5" />
-      <rect x="430" y="128" width="11" height="62" rx="3" fill="#00f5d4" opacity="0.6" />
-      <line x1="381" y1="194" x2="448" y2="194" stroke="#555570" strokeWidth="1" />
-      <text x="414" y="210" fill="#555570" fontSize="9" textAnchor="middle" fontFamily="monospace">impact</text>
+      <circle cx="398" cy="168" r="6" fill="#0ea5e9" opacity="0.65" />
+      <circle cx="122" cy="312" r="4" fill="#0ea5e9" opacity="0.5" />
     </g>
-
-    {/* ── Floating tag chips — float group C ── */}
+    {/* float-c group: amber dots */}
     <g className="float-c">
-      <rect x="12"  y="90"  width="72" height="24" rx="12" fill="#16161f" stroke="#a259ff" strokeWidth="1" strokeOpacity="0.6" />
-      <text x="48"  y="106" fill="#a259ff" fontSize="10" textAnchor="middle" fontFamily="monospace">Python 🐍</text>
-      <rect x="20"  y="130" width="64" height="22" rx="11" fill="#16161f" stroke="#00f5d4" strokeWidth="1" strokeOpacity="0.5" />
-      <text x="52"  y="145" fill="#00f5d4" fontSize="9"  textAnchor="middle" fontFamily="monospace">React ⚛</text>
-      <rect x="8"   y="168" width="68" height="22" rx="11" fill="#16161f" stroke="#a259ff" strokeWidth="1" strokeOpacity="0.4" />
-      <text x="42"  y="183" fill="#a259ff" fontSize="9"  textAnchor="middle" fontFamily="monospace">AI / ML 🤖</text>
+      <circle cx="370" cy="328" r="5" fill="#f59e0b" opacity="0.6" />
+      <circle cx="150" cy="152" r="4" fill="#f59e0b" opacity="0.5" />
     </g>
 
-    {/* ── Monitor ── */}
-    <rect x="118" y="210" width="224" height="148" rx="12" fill="#0d0d12" stroke="url(#grad1)" strokeWidth="1.8" />
-    <rect x="128" y="220" width="204" height="126" rx="7"  fill="#080810" />
-    <rect x="128" y="220" width="204" height="126" rx="7"  fill="url(#screenGlow)" opacity="0.4" />
+    {/* E — Main Aurora Sphere */}
+    {/* Outer glow */}
+    <circle cx="260" cy="240" r="105" fill="url(#ambientGlow)" />
+    {/* Main sphere */}
+    <circle cx="260" cy="240" r="84" fill="url(#auroraGrad)" className="orb-pulse" />
+    {/* Glass highlight large */}
+    <circle cx="237" cy="218" r="32" fill="rgba(255,255,255,0.13)" />
+    {/* Glass highlight small/bright */}
+    <circle cx="231" cy="212" r="14" fill="rgba(255,255,255,0.22)" />
+    {/* Sphere edge ring */}
+    <circle cx="260" cy="240" r="84" fill="none" stroke="rgba(255,255,255,0.18)" strokeWidth="1.5" />
 
-    {/* Screen code lines */}
-    <g className="screen">
-      <rect x="142" y="234" width="72"  height="5" rx="2" fill="#a259ff" opacity="0.9" />
-      <rect x="142" y="246" width="110" height="5" rx="2" fill="#00f5d4" opacity="0.7" />
-      <rect x="142" y="258" width="55"  height="5" rx="2" fill="#a259ff" opacity="0.5" />
-      <rect x="142" y="270" width="90"  height="5" rx="2" fill="#00f5d4" opacity="0.6" />
-      <rect x="142" y="282" width="65"  height="5" rx="2" fill="#9090aa" opacity="0.4" />
-      <rect x="142" y="294" width="85"  height="5" rx="2" fill="#a259ff" opacity="0.7" />
-      <rect x="142" y="306" width="48"  height="5" rx="2" fill="#00f5d4" opacity="0.5" />
-      <rect x="142" y="318" width="78"  height="5" rx="2" fill="#a259ff" opacity="0.4" />
-      <rect x="196" y="330" width="5"   height="9" rx="1" fill="#00f5d4" opacity="0.9" className="cursor-b" />
+    {/* F — Three floating abstract accent shapes */}
+
+    {/* Shape 1 — Small aurora sphere, top-right */}
+    <g className="float-a">
+      <circle cx="415" cy="92" r="24" fill="url(#miniRoseGrad)" filter="url(#glow)" />
+      <circle cx="409" cy="86" r="9"  fill="rgba(255,255,255,0.28)" />
     </g>
 
-    {/* Monitor stand */}
-    <rect x="218" y="358" width="24" height="14" rx="2"   fill="#1a1a28" />
-    <rect x="196" y="370" width="68" height="5"  rx="2.5" fill="#1a1a28" />
-
-    {/* Desk */}
-    <rect x="50" y="374" width="380" height="10" rx="5" fill="#1a1a28" />
-
-    {/* ── Person ── */}
-    {/* Head */}
-    <circle cx="370" cy="295" r="28" fill="#1e1a3a" stroke="#a259ff" strokeWidth="1.5" strokeOpacity="0.6" />
-    {/* Hair */}
-    <path d="M346 283 Q370 268 394 283" fill="none" stroke="#7c3aed" strokeWidth="2.5" strokeOpacity="0.5" strokeLinecap="round" />
-    {/* Glasses */}
-    <rect x="355" y="290" width="14" height="10" rx="4" fill="none" stroke="#00f5d4" strokeWidth="1.2" strokeOpacity="0.5" />
-    <rect x="371" y="290" width="14" height="10" rx="4" fill="none" stroke="#00f5d4" strokeWidth="1.2" strokeOpacity="0.5" />
-    <line x1="369" y1="295" x2="371" y2="295" stroke="#00f5d4" strokeWidth="1" strokeOpacity="0.5" />
-    {/* Eyes */}
-    <circle cx="362" cy="296" r="3.5" fill="#00f5d4" opacity="0.8" />
-    <circle cx="378" cy="296" r="3.5" fill="#00f5d4" opacity="0.8" />
-    {/* Smile */}
-    <path d="M361 306 Q370 312 379 306" fill="none" stroke="#a259ff" strokeWidth="1.8" strokeLinecap="round" opacity="0.8" />
-    {/* Body */}
-    <path d="M336 323 Q353 315 370 320 Q387 315 404 323 L410 374 L330 374 Z" fill="#1e1a3a" />
-    <path d="M358 320 L363 345 L377 345 L372 320" fill="none" stroke="#a259ff" strokeWidth="1" strokeOpacity="0.3" />
-    {/* Arms */}
-    <path d="M336 332 Q310 345 290 368" stroke="#1e1a3a" strokeWidth="14" strokeLinecap="round" fill="none" />
-    <path d="M404 332 Q420 342 425 355" stroke="#1e1a3a" strokeWidth="12" strokeLinecap="round" fill="none" />
-    <ellipse cx="290" cy="368" rx="11" ry="6" fill="#2a1f4a" />
-    <ellipse cx="425" cy="355" rx="9"  ry="5.5" fill="#2a1f4a" />
-    {/* Keyboard */}
-    <rect x="292" y="362" width="130" height="8" rx="4" fill="#1a1a28" stroke="#a259ff" strokeWidth="0.5" strokeOpacity="0.3" />
-    {/* Chair */}
-    <rect x="325" y="332" width="10" height="50" rx="4" fill="#161624" stroke="#a259ff" strokeWidth="0.5" strokeOpacity="0.2" />
-    <rect x="325" y="375" width="90" height="8"  rx="4" fill="#161624" />
-    <rect x="340" y="383" width="7"  height="22"       fill="#161624" />
-    <rect x="373" y="383" width="7"  height="22"       fill="#161624" />
-    <rect x="325" y="400" width="75" height="5"  rx="2.5" fill="#161624" />
-
-    {/* ── Data flow dashes from head to screen ── */}
-    <path className="dash" d="M360 267 Q310 245 285 230" stroke="#a259ff" strokeWidth="1.2" strokeOpacity="0.4" fill="none" />
-    <path className="dash" d="M380 267 Q400 250 380 230" stroke="#00f5d4" strokeWidth="1.2" strokeOpacity="0.35" fill="none" />
-
-    {/* ── AI badge near head — float B ── */}
-    <g className="float-b">
-      <rect x="400" y="258" width="58" height="20" rx="10" fill="#16161f" stroke="#00f5d4" strokeWidth="1" strokeOpacity="0.6" />
-      <text x="429" y="272" fill="#00f5d4" fontSize="9.5" textAnchor="middle" fontFamily="monospace">AI Mode 🧠</text>
+    {/* Shape 2 — Hollow amber ring, top-left */}
+    <g className="float-c">
+      <circle cx="94" cy="145" r="20" fill="rgba(245,158,11,0.15)" stroke="rgba(245,158,11,0.55)" strokeWidth="2.5" />
+      <circle cx="94" cy="145" r="10" fill="rgba(245,158,11,0.2)" />
     </g>
 
-    {/* Sparkles */}
-    <circle cx="100" cy="210" r="2.5" fill="#00f5d4" opacity="0.5" />
-    <circle cx="445" cy="215" r="2"   fill="#a259ff" opacity="0.45" />
-    <circle cx="58"  cy="290" r="2"   fill="#a259ff" opacity="0.35" />
-    <circle cx="458" cy="295" r="3"   fill="#00f5d4" opacity="0.4" />
-    <circle cx="110" cy="350" r="2"   fill="#00f5d4" opacity="0.4" />
+    {/* Shape 3 — Small sky sphere, bottom-left */}
+    <g className="float-b2">
+      <circle cx="82" cy="360" r="18" fill="url(#miniSkyGrad)" filter="url(#glow)" />
+      <circle cx="77" cy="355" r="7"  fill="rgba(255,255,255,0.25)" />
+    </g>
+
+    {/* Shape 4 — Tiny rose disc, bottom-right */}
+    <g className="float-a2">
+      <circle cx="450" cy="370" r="13" fill="rgba(225,29,72,0.25)" stroke="rgba(225,29,72,0.5)" strokeWidth="2" />
+    </g>
+
+    {/* G — Sparkle dots */}
+    <circle cx="50"  cy="200" r="2.5" fill="#e11d48" className="sp1" />
+    <circle cx="55"  cy="300" r="2.5" fill="#0ea5e9" className="sp2" />
+    <circle cx="115" cy="75"  r="2.5" fill="#f59e0b" className="sp3" />
+    <circle cx="160" cy="400" r="2.5" fill="#e11d48" className="sp1" />
+    <circle cx="460" cy="110" r="2.5" fill="#0ea5e9" className="sp2" />
+    <circle cx="470" cy="290" r="2.5" fill="#f59e0b" className="sp3" />
+    <circle cx="480" cy="200" r="2.5" fill="#e11d48" className="sp1" />
+    <circle cx="330" cy="50"  r="2.5" fill="#0ea5e9" className="sp2" />
+    <circle cx="190" cy="465" r="2.5" fill="#f59e0b" className="sp3" />
+    <circle cx="440" cy="440" r="2.5" fill="#e11d48" className="sp1" />
+    <circle cx="380" cy="430" r="2.5" fill="#0ea5e9" className="sp2" />
+    <circle cx="310" cy="460" r="2.5" fill="#f59e0b" className="sp3" />
+    <circle cx="140" cy="250" r="2.5" fill="#e11d48" className="sp1" />
+    <circle cx="68"  cy="180" r="2.5" fill="#0ea5e9" className="sp2" />
+    <circle cx="490" cy="340" r="2.5" fill="#f59e0b" className="sp3" />
+    <circle cx="360" cy="80"  r="2.5" fill="#e11d48" className="sp1" />
+    <circle cx="120" cy="420" r="2.5" fill="#0ea5e9" className="sp2" />
+    <circle cx="35"  cy="380" r="2.5" fill="#f59e0b" className="sp3" />
   </svg>
 );
 
@@ -490,10 +446,10 @@ const Hero = () => {
   const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
 
   const roles = [
-    'Data Scientist & Analyst',
-    'Frontend Developer',
-    'AI Data Reviewer',
-    'Business Analyst',
+    'builder at heart',
+    'curious by default',
+    'detail-obsessed, product-minded',
+    'equal parts engineer & storyteller',
   ];
 
   const typedText = useTypewriter(roles);
@@ -569,7 +525,7 @@ const Hero = () => {
           animate={inView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.3 }}
         >
-          <AIIllustration />
+          <AuroraSphere />
         </IllustrationWrap>
       </HeroGrid>
     </HeroSection>

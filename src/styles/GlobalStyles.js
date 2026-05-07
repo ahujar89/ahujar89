@@ -2,29 +2,29 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
   :root {
-    /* Dark Theme Colors */
-    --background-dark: #0a0c10;
-    --background-card: #161b22;
-    --background-light: #21262d;
-    --border-color: #30363d;
-    
+    /* Bloom — Rose & Sky */
+    --background-dark: #fce7ef;
+    --background-card: #ffffff;
+    --background-light: #fff9fb;
+    --border-color: rgba(225, 29, 72, 0.12);
+
     /* Text Colors */
-    --text-light: #f8f9fa;
-    --text-medium: #adb5bd;
-    --text-dark: #6c757d;
-    
+    --text-light: #1a0812;
+    --text-medium: #7d3a4f;
+    --text-dark: #1a0812;
+
     /* Accent Colors */
-    --primary-color: #6c5ce7;
-    --primary-light: #a29bfe;
-    --secondary-color: #00cec9;
-    --accent-color: #fd79a8;
-    --accent-secondary: #fdcb6e;
-    
+    --primary-color: #e11d48;
+    --primary-light: #fb7185;
+    --secondary-color: #0ea5e9;
+    --accent-color: #f59e0b;
+    --accent-secondary: #a855f7;
+
     /* UI Elements */
     --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     --gradient-accent: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
-    --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.4);
+    --shadow: 0 2px 8px rgba(225, 29, 72, 0.07), 0 8px 28px rgba(0, 0, 0, 0.06);
+    --shadow-hover: 0 8px 32px rgba(225, 29, 72, 0.16), 0 2px 8px rgba(0, 0, 0, 0.06);
     
     /* Spacing */
     --spacing-xs: 0.5rem;
@@ -101,22 +101,22 @@ const GlobalStyles = createGlobalStyle`
   }
   
   ::-webkit-scrollbar-track {
-    background: var(--background-card);
+    background: var(--background-dark);
   }
-  
+
   ::-webkit-scrollbar-thumb {
-    background: var(--primary-color);
+    background: var(--primary-light);
     border-radius: 5px;
   }
-  
+
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--primary-light);
+    background: var(--primary-color);
   }
-  
+
   /* Selection */
   ::selection {
-    background-color: var(--primary-color);
-    color: var(--text-light);
+    background-color: var(--primary-light);
+    color: var(--background-light);
   }
 `;
 
